@@ -36,10 +36,10 @@ def print_area_and_hypotenuse(x1, y1, x2, y2):
     width, height = find_width_height(x1, y1, x2, y2)
     area = get_area_rectangle(width, height)
     hypotenuse = get_hypotenuse(width, height)
-    print 'Area of the rectangle is:'
-    print area
-    print 'The diagonal of the rectangle is:'
-    print hypotenuse
+    print('Area of the rectangle is:')
+    print(area)
+    print('The diagonal of the rectangle is:')
+    print(hypotenuse)
 
 
 if __name__ == '__main__':
@@ -47,7 +47,7 @@ if __name__ == '__main__':
         x1, y1, x2, y2 = map(int, sys.argv[1:5])
         print_area_and_hypotenuse(x1, y1, x2, y2)
     else:
-        print __doc__
-        print ''
-        print 'This program requires exactly 4 number arguments'
+        print(__doc__)
+        print('')
+        print('This program requires exactly 4 number arguments')
 
