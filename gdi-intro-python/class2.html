@@ -256,7 +256,9 @@ print('Done')
                     <p>Consider the following example that uses iteration to derive a factorial</p>
                     <p class="fragment">(A factorial of a number is equal to that number * every positive integer less than that number. E.g. The factorial of 4 is 4 * 3 * 2 * 1, which equals 24</p>
                     <pre><code contenteditable class="fragment python">
-input_value = raw_input('Enter a positive integer:')
+input_value = input('Enter a positive integer:')
+#For Python 2.7, replace the first line with:
+#input_value = raw_input('Enter a positive integer:')
 n = int(input_value)
 result = 1
 while n > 1:
