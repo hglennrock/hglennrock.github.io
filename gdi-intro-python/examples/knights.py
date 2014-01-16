@@ -1,10 +1,5 @@
-"""
-Example from class2
-"""
-
 def shrubbery():
-    print "I am a shrubber"
+    print("I am a shrubbery")
 
 def ni():
-    print "Ni!" * 3 
-
+    print("Ni!" * 3)
