@@ -81,10 +81,10 @@ def print_area_and_hypotenuse(x1, y1, x2, y2):
     width, height = find_width_height(x1, y1, x2, y2)
     area = get_area_rectangle(width, height)
     hypotenuse = get_hypotenuse(width, height)
-    print 'Area of the rectangle is:'
-    print area
-    print 'The diagonal of the rectangle is:'
-    print hypotenuse
+    print('Area of the rectangle is:')
+    print(area)
+    print('The diagonal of the rectangle is:')
+    print(hypotenuse)
                     </code></pre>
                 </section>
 
@@ -101,8 +101,8 @@ def get_hypotenuse(a, b):
     return sqrt(a ** 2 + b ** 2)
 
 def print_hypotenuse(x1, y1, x2, y2):
-    print 'The diagonal of the rectangle is:'
-    print get_hypotenuse(find_width_height(x1, y1, x2, y2))
+    print('The diagonal of the rectangle is:')
+    print(get_hypotenuse(find_width_height(x1, y1, x2, y2)))
 
 
 # f(g(x))
@@ -119,14 +119,14 @@ def print_hypotenuse(x1, y1, x2, y2):
                     <p class="fragment">We can use the dir() function to see the methods of an object and help() to see what they do.</p>
                     <pre><code contenteditable class="fragment python">
 a = 4
-print dir(a)
+print(dir(a))
 
-name = 'caleb'
+name = 'heather'
 sentence = 'the quick brown fox did the thing with the thing'
-print dir(name)
+print(dir(name))
 
-print name.capitalize()
-print sentence.count('the')
+print(name.capitalize())
+print(sentence.count('the'))
 
 help(name.upper)
                     </code></pre>
@@ -165,7 +165,7 @@ words = [0, 'list', 'of', 3, 'strings', 'and', 'numbers']
 to_dos = []
 to_dos.append('buy soy milk')
 to_dos.append('install git')
-print to_dos
+print(to_dos)
                     </code></pre>
                     <p class="fragment">Therefore, lists are <strong>mutable</strong></p>
                     <p class="fragment">This means that a list can change values during the duration of a program</p>
@@ -184,7 +184,7 @@ for price in prices:
     costs.append(price + shipping_cost)
 
 for cost in costs:
-    print cost
+    print(cost)
                     </code></pre>
                 </section>
 
@@ -195,7 +195,7 @@ for cost in costs:
                     <p class="fragment">To index on a collection, follow it immediately with `[index]`. (index here is a number, variable or expression)</p>
                     <pre><code contenteditable class="fragment python">
 numbers = [10, 20, 30]
-print numbers[0]
+print(numbers[0])
                     </code></pre>
                 </section>
 
@@ -207,10 +207,10 @@ print numbers[0]
 to_dos = [
     'install git', 'read email', 'make lunch',
 ]
-print to_dos[0]
-print to_dos[1]
+print(to_dos[0])
+print(to_dos[1])
 
-print to_dos[-1]
+print(to_dos[-1])
                     </code></pre>
                     <p class="fragment">Negative numbers mean "go back from the end this many". e.g. -1 is the last element, -2 is the penultimate</p>
                     <p class="fragment">An IndexError results if an index exceeds the length of the list minus 1</p>
@@ -256,12 +256,12 @@ menu = {
     'baguette': 3,
 }
 
-print menu.keys()
-print menu.values()
-print menu.items()
-print menu.get('pizza')
-print menu.get('water')
-print menu.get('juice', 5)
+print(menu.keys())
+print(menu.values())
+print(menu.items())
+print(menu.get('pizza'))
+print(menu.get('water'))
+print(menu.get('juice', 5))
                     </code></pre>
                     <p class="fragment">'get' will return None if the key isn't present or a default value if provided.</p>
                 </section>
@@ -303,13 +303,13 @@ dimensions = find_width_height(point_a, point_b)
                 <section>
                     <h3>Sets</h3>
                     <p><strong>Sets</strong> are unordered collections whose elements are unique. Therefore, adding a value to a set that already has it, does nothing.</p>
-                    <p class="fragment">Sets can be created with comma separated elements enclosed in '{}' in Python 2.7. Very often, one will make a list and use the set() function</p>
+                    <p class="fragment">Sets can be created with comma separated elements enclosed in '{}' in Python 2.7. Very often, one will make a list and use the set() function. Note: you will want to use the set() function to create an empty set, as empty {} will create a dictionary.</p>
                     <pre><code contenteditable class="fragment python">
 set_a = set([0, 3, 7])
 set_b = set([0, 4, 7])
 
 # .add() is like .append() but for sets
-print set_a.add(4)
+print(set_a.add(4))
 
 # or in 2.7
 set_a = {0, 3, 7} # and so on
@@ -324,10 +324,10 @@ set_a = {0, 3, 7} # and so on
                     <pre><code contenteditable class="fragment python">
 color = (255, 255, 0)
 if 0 in color:
-    print '0 is in the color'
+    print('0 is in the color')
 
 menu = {'tofu': 4}
-print 'tofu' in menu
+print('tofu' in menu)
 
 names = ['Mary', 'Martha', 'George']
 george_present = 'George' in names
@@ -359,10 +359,12 @@ def is_word_in_file(word, filename):
         # Your code should do something with the word and line variables and assign the value to a variable for returning
 
 input_word = raw_input("Enter a word to search for:")
+#For Python 3.3, use the following line instead:
+#input_word = input("Enter a word to search for:")
 answer = is_word_in_file(input_word, 'pride.txt')
 # Display the answer in some meaningful way
                     </code></pre>
-                    <p>I have used <a href="http://calebsmith.github.io/gdi-intro-python/examples/pride.txt">Pride and Prejudice</a> from Project Gutenburg with my example code. You can click this link and copy/paste the text into a new text file called 'pride.txt' and save it in the same folder as your code</p>
+                    <p>I have used <a href="http://hglennrock.github.io/gdi-intro-python/examples/pride.txt">Pride and Prejudice</a> from Project Gutenburg with my example code. You can click this link and copy/paste the text into a new text file called 'pride.txt' and save it in the same folder as your code</p>
                 </section>
 
                 <!-- Block 3 20 minutes -->
@@ -393,11 +395,11 @@ all_to_dos.append(mary_to_dos)
 all_to_dos.append(fran_to_dos)
 all_to_dos.append(baby_to_dos)
 
-print all_to_dos
+print(all_to_dos)
 
 for to_dos in all_to_dos:
     for to_do in to_dos:
-        print to_do
+        print(to_do)
                     </code></pre>
                     <p class="fragment">What if we want to <strong>flatten</strong> the to do's?</p>
                     <p class="fragment">What if we want the to do's to be unique?</p>
@@ -419,9 +421,9 @@ card_b = {
 
 hand = [card_a, card_b]
 
-print 'The hand contains:'
+print('The hand contains:')
 for card in hand:
-    print 'A', card['number'], 'of', card['suit']
+    print('A', card['number'], 'of', card['suit'])
                     </code></pre>
                 </section>
 
@@ -441,7 +443,7 @@ all_to_dos = {
 }
 
 for name, to_dos in all_to_dos.items():
-    print name, 'needs to: ', to_dos
+    print(name, 'needs to: ', to_dos)
 
 # Changing this later can be accomplished with
 all_to_dos['baby'].append('cry')
@@ -500,18 +502,18 @@ all_tweets = [
                     <h3>Examples of using Builtins</h3>
                     <pre><code contenteditable class="fragment python">
 # Using len() - Determines length
-print len([1, 2])
+print(len([1, 2]))
 
 # range() - Quickly creates a list of integers
-print range(5)
-print range(5, 10)
-print range(0, 10, 2)
-print range(9, -1, -1)
+print(range(5))
+print(range(5, 10))
+print(range(0, 10, 2))
+print(range(9, -1, -1))
 
 # sorted() - Sort a given list
 grades = [93, 100, 60]
 grades = sorted(grades)
-print grades
+print(grades)
                     </code></pre>
                 </section>
 
@@ -520,18 +522,18 @@ print grades
                     <pre><code contenteditable class="fragment python">
 # enumerate() - Obtain the index of the element in the loop
 
-print 'To Do:'
+print('To Do:')
 to_dos = ['work', 'sleep', 'work']
 for index, item in enumerate(to_dos):
-    print '{0}. {1}'.format(index + 1, item)
+    print('{0}. {1}'.format(index + 1, item))
 
-print list(enumerate(to_dos))
+print(list(enumerate(to_dos)))
 
 # zip()
 widths = [10, 15, 20]
 heights = [5, 8, 12]
 for width, height in zip(widths, heights):
-    print 'Area is {0}'.format(width * height)
+    print('Area is {0}'.format(width * height))
                     </code></pre>
                 </section>
 
@@ -565,6 +567,8 @@ def is_word_in_file(word, filename):
     return result
 
 input_word = raw_input("Enter a word to search for:")
+#For Python 3.3, replace with:
+#input_word = input("Enter a word to search for:")
 answer = is_word_in_file(input_word, 'pride.txt')
 # Display the answer in some meaningful way
                     </code></pre>
