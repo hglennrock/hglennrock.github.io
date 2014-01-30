@@ -114,11 +114,11 @@ class Grid(object):
         """
         Prints a display of the grid with the number of mobiles in each position
         """
-        for y in xrange(0, self.y_limit):
+        for y in range(0, self.y_limit):
             row = '-' * (self.x_limit * 3 + 1)
             print(row)
             current_row = '|'
-            for x in xrange(0, self.x_limit):
+            for x in range(0, self.x_limit):
                num_mobiles_in_tile = len(self.mobiles.get((x, y), []))
                spacer = ' ' if num_mobiles_in_tile < 10 else ''
                display_value = spacer + str(num_mobiles_in_tile)
