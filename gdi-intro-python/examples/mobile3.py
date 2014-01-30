@@ -124,7 +124,7 @@ class Grid(object):
                display_value = spacer + str(num_mobiles_in_tile)
                current_row += display_value + '|'
             print(current_row)
-        print('-' * self.x_limit * 3 + 1)
+        print('-' * (self.x_limit * 3 + 1))
 
     def __repr__(self):
         return "<Grid with upper bounds (" + str(self.x_limit) + "," + str(self.y_limit) + ")>"

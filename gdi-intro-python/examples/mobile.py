@@ -115,8 +115,7 @@ class Grid(object):
         Prints a display of the grid with the number of mobiles in each position
         """
         for y in xrange(0, self.y_limit):
-            row = '-' * (self.x_limit * 3 + 1)
-            print(row)
+            print('-' * (self.x_limit * 3 + 1))
             current_row = '|'
             for x in xrange(0, self.x_limit):
                num_mobiles_in_tile = len(self.mobiles.get((x, y), []))
@@ -124,7 +123,7 @@ class Grid(object):
                display_value = spacer + str(num_mobiles_in_tile)
                current_row += display_value + '|'
             print(current_row)
-        print('-' * self.x_limit * 3 + 1)
+        print('-' * (self.x_limit * 3 + 1))
 
     def __repr__(self):
         return "<Grid with upper bounds (" + str(self.x_limit) + "," + str(self.y_limit) + ")>"
