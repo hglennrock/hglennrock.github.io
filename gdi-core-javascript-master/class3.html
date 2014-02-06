@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Class 3 ~ Javascript ~ Girl Develop IT</title>
+    <meta name="description" content="This is the official Girl Develop It Core Intro Javascript course. Material based on original material by Sara Chipps, Pamela Fox, Alexis Goldstein, Izzy Johnston and Leo Newball.
+
+    The course is meant to be taught in 4 two-hour sections. Each of the slides and practice files are customizable according to the needs of a given class or audience.">
+    <meta name="author" content="Girl Develop It">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="reveal/css/reveal.css" type="text/css">
+    <link rel="stylesheet" href="reveal/css/theme/gdidefault.css" id="theme" type="text/css"><!-- For syntax highlighting -->
+    <!-- light editor<link rel="stylesheet" href="lib/css/light.css">-->
+    <!-- dark editor-->
+    <link rel="stylesheet" href="reveal/lib/css/dark.css" type="text/css"><!-- If use the PDF print sheet so students can print slides-->
+    <link rel="stylesheet" href="reveal/css/print/pdf.css" type="text/css" media="print"><!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+    <style>
+        .reveal code {
+            max-height: initial;
+        }
+    </style>
+</head>
+
+<body>
+	<script type="text/javascript">
+	function keydownSample(e) { 
+		var value = document.getElementById('keydown-sample').innerText;
+		if(e.which === 8) 
+		{
+			if(value != 0)
+				value--; 
+		} 
+		else 
+		{ 
+			value++; 
+		} 
+		document.getElementById('keydown-sample').innerText = value; 
+	}
+	function keyupSample(e) { 
+		var value = document.getElementById('keyup-sample').innerText;
+		if(e.which === 8) 
+		{
+			if(value != 0)
+				value--; 
+		} 
+		else 
+		{ 
+			value++; 
+		} 
+		document.getElementById('keyup-sample').innerText = value; 
+	}
+	function blurSample(e) {
+		var value = new Date();
+		document.getElementById('blur-sample').innerText = 'Left the input element at: ' + value.toLocaleTimeString();
+	}
+	function focusSample(e) {
+		var value = new Date();
+		document.getElementById('focus-sample').innerText = 'Entered the input element at: ' + value.toLocaleTimeString();
+	}
+	</script>
+    <div class="reveal">
+        <!-- Any section element inside of this container is displayed as a slide -->
+
+        <div class="slides">
+            <!-- Opening slide -->
+
+            <section>
+                <img src="images/gdi_logo_badge.png">
+
+                <h3>Beginning Javascript</h3>
+
+                <h4>Class 3</h4>
+            </section><!-- Welcome-->
+
+            <section>
+                <h3>Welcome!</h3>
+
+                <div class="left-align">
+                    <p>Girl Develop It is here to provide affordable and accessible programs to learn software through mentorship and hands-on instruction.</p>
+
+                    <p class="green">Some "rules"</p>
+
+                    <ul>
+                        <li>We are here for you!</li>
+
+                        <li>Every question is important</li>
+
+                        <li>Help each other</li>
+
+                        <li>Have fun</li>
+                    </ul>
+                </div>
+            </section><!-- DOM -->
+
+            <section>
+                <h3>DOM Basics</h3>
+
+                <ul>
+                    <li class="fragment">"Document Object Model"</li>
+
+                    <li class="fragment">Standard maintained by the W3C (the same nerds who brought you the HTML and CSS specs)</li>
+
+                    <li class="fragment">A way to interact with the HTML elements on a webpage</li>
+
+                    <li class="fragment">Uses the standard <span class="green">document</span> object in JavaScript</li>
+
+                    <li class="fragment">Provides a structured representation of HTML elements</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>DOM Structure</h3>
+
+                <p class="fragment left-align">The DOM is made up of nodes that are connected (and named) like a family tree.</p>
+
+                <p class="fragment left-align">The first node is known as the root.</p>
+
+                <p class="fragment left-align">In HTML, the root is always the &lt;html&gt; element</p>
+
+                <p class="fragment left-align">Nodes are often referred to based on their relationships with other nodes.</p>
+
+                <p class="fragment left-align">The common relationships are parent, child, and sibling.</p>
+            </section>
+
+            <section>
+                <h3>DOM Structure</h3>
+
+                <p class="fragment"><img src="images/htmltree.gif"></p>
+
+                <p class="fragment left-align">&lt;head&gt; and &lt;body&gt; are siblings.</p>
+
+                <p class="fragment left-align">&lt;head&gt; is the parent of &lt;title&gt;.</p>
+
+                <p class="fragment left-align">&lt;h1&gt; is the child of &lt;body&gt;.</p>
+            </section>
+
+            <section>
+                <h3>DOM Interaction</h3>
+
+                <p class="fragment left-align">Access nodes via their relationship with other nodes.</p>
+
+                <div class="fragment">
+                    <pre>
+<code contenteditable="" class="javascript">
+  var bodyNode = document.body; // &lt;body&gt;
+  var htmlNode = document.body.parentNode; // &lt;html&gt;
+  for (var i = 0; i &lt; document.body.childNodes.length; i++) {
+    var childNode = document.body.childNodes[i];
+    //could be &lt;p&gt;, &lt;h1&gt;, etc.
+    //any html element
+  }
+          </code>
+</pre>
+                </div>
+            </section>
+
+            <section>
+                <h3>DOM Interaction: Easier</h3>
+
+                <p class="fragment blue left-align">Finding every element on the page by siblings and children is time consuming!</p>
+
+                <p class="fragment left-align">The <span class="green">document</span> object provides methods for finding DOM nodes without going one by one</p>
+            </section>
+
+            <section>
+                <h3>DOM Interaction: Finding Elements</h3>
+
+                <div class="fragment">
+                    getElementById - gets an element by its ID attribute; method of the document object.
+                    <pre>
+<code contenteditable="" class="html">&lt;img id="mainpicture" src="http://girldevelopit.com/assets/pink-logo.png"&gt;</code>
+</pre>
+                    <pre>
+<code contenteditable="" class="javascript">var img = document.getElementById('mainpicture');</code>
+</pre>
+                </div>
+
+                <div class="fragment">
+                    getElementsByTagName - gets a set of elements by their HTML tag name (such as div, p, etc.); method of the document object OR a node.
+                    <pre>
+<code contenteditable="" class="html">&lt;li class="peanut"&gt;Charlie Brown&lt;/li&gt;
+&lt;li class="peanut"&gt;Linus van Pelt&lt;/li&gt;</code>
+</pre>
+                    <pre>
+<code contenteditable="" class="javascript">var listItems = document.getElementsByTagName('li');
+for (var i = 0; i &lt; listItems.length; i++) {
+   var listItem = listItems[i];
+}</code>
+</pre>
+                </div>
+            </section>
+
+            <section>
+                <h3>DOM Interaction: Finding Elements</h3>
+
+                <div class="fragment">
+                    getElementsByClassName - gets a set of elements by their class attribute; method of the document object OR a node.
+                    <pre>
+<code contenteditable="" class="html">&lt;img class="image-large" src="http://www.girldevelopit.com/assets/pink-logo.png" /&gt;
+&lt;img class="image-large" src="http://www.girldevelopit.com/assets/community.png" /&gt;</code>
+</pre>
+                    <pre>
+<code contenteditable="" class="javascript">var largeImages = document.getElementsByClassName('image-large');
+for (var i = 0; i &lt; largeImages.length; i++) {
+   var image = largeImages[i];
+}</code>
+</pre>
+                </div>
+            </section><!-- Create element and append child-->
+
+            <section>
+                <h3>DOM Modifying -- Creating</h3>
+
+                <p class="left-align fragment">The <span class="green">document</span> object can create new nodes, modify node attributes, and modify node content.</p>
+
+                <p class="left-align fragment">There are two methods for creating nodes.</p>
+
+                <p class="fragment">document.createElement - creates a new HTML element</p>
+                <pre>
+<code contenteditable="" class="fragment javascript">var paragraph = document.createElement('p');</code>
+</pre>
+                <p class="fragment">document.createTextNode - creates a new text node</p>
+                <pre>
+<code contenteditable="" class="fragment javascript">var paragraphText = document.createTextNode('New Paragraph!');</code>
+</pre>
+            </section>
+
+            <section>
+                <h3>DOM Modifying -- Adding and Removing</h3>
+
+                <p class="fragment">parentNode.appendChild(childNode) - appends childNode as the last child of parentNode.</p>
+                <pre>
+<code contenteditable="" class="fragment javascript">var paragraph = document.createElement('p');
+var paragraphText = document.createTextNode('New Paragraph!');
+paragraph.appendChild(paragraphText);
+document.body.appendChild(paragraph);</code>
+</pre>
+                <p class="fragment">parentNode.removeChild(childNode) - removes the specified childNode.</p>
+                <pre>
+<code contenteditable="" class="fragment javascript">document.body.removeChild(paragraphText);</code>
+</pre>
+            </section>
+
+           <!-- <section>
+                <h3>DOM Modifying -- Replacing and Inserting</h3>
+
+                <p class="fragment">parentNode.replaceChild(new, old) - replaces the old node with the new node.</p>
+                <pre>
+<code contenteditable="" class="fragment javascript">var replacementParagraphText = document.createTextNode('The Replacement Paragraph');
+paragraph.replaceChild(replacementParagraphText, paragraphText);</code>
+</pre>
+                <p class="fragment">parentNode.insertBefore(new, reference) - inserts the new node before the reference node.</p>
+                <pre>
+<code contenteditable="" class="fragment javascript">var newParagraph = document.createElement('p');
+var newParagraphText = document.createTextNode('Inserted before');
+newParagraph.appendChild(newParagraphText);
+document.body.insertBefore(newParagraph, paragraph);</code>
+</pre>
+            </section>-->
+            
+            <!-- Attributes-->
+
+            <section>
+                <h3>DOM Nodes -- Attributes</h3>
+
+                <p>We can use node methods to set and retrieve attributes</p>
+
+                <div class="fragment">
+                    getAttribute - retrieves an HTML attribute of a node
+                    <pre>
+<code contenteditable="" class="javascript">var img = document.getElementById('mainpicture');
+var imgUrl = img.getAttribute('src');
+document.write(imgUrl);</code>
+</pre></div>
+<div class="fragment">
+setAttribute - sets an HTML attribute of a node
+                    <pre>
+<code contenteditable="" class="javascript">var img = document.getElementById('mainpicture');
+img.setAttribute('src', 'new-picture.jpeg');</code>
+</pre>
+                </div>
+            </section><!-- Inner HTML-->
+
+            <section>
+                <h3>DOM innerHTML</h3>
+
+                <p>Each DOM node has an innerHTML property:</p>
+
+                <div class="fragment">
+                    <pre>
+<code contenteditable="" class="javascript">document.body.innerHTML;</code>
+</pre>
+                </div>
+
+                <div class="fragment">
+                    You can set innerHTML yourself to change the contents of the node:
+                    <pre>
+<code contenteditable="" class="javascript">document.body.innerHTML = '&lt;p&gt;I changed the whole page!&lt;/p&gt;';</code>
+</pre>
+                </div>
+
+                <div class="fragment">
+                    You can also just add to the innerHTML instead of replace everything:
+                    <pre>
+<code contenteditable="" class="javascript">
+document.body.innerHTML += "...just adding this bit at the end of the page.";</code>
+</pre>
+                </div>
+            </section><!-- Exercise-->
+
+            <section>
+                <h3>Let's Develop It</h3>
+
+                <ul>
+                    <li>Put it all together.</li>
+
+                    <li>Modify your existing three functions to add new elements to the screen instead of just outputting one large line.</li>
+
+                    <li>Keep in mind how to find an element, how to append an element, and how to change the inner html of an element.</li>
+
+                    <li>There are lots of possible solutions! Be creative!</li>
+                </ul>
+                <pre><code class="javascript">var div = document.getElementById('id-here');
+
+var paragraph = document.createElement('p');
+
+var paragraphText = document.createTextNode('Text goes here');
+
+div.appendChild(paragraph);
+
+div.innerHTML = 'JavaScript is &lt;em&gt;awesome&lt;/em&gt;!';
+
+document.body.appendChild(div);</code></pre>
+            </section>
+
+            <section>
+                <h3>Let's Answer It (Calculate)</h3>
+                <pre>
+<code class="html xml">&lt;div id="lifetime-supply"&gt;&lt;/div&gt;</code>
+</pre>
+                <pre>
+<code class="javascript">function calculate(){
+    var age = 26;
+    var oldAge = 96;
+    var perDay = 2;
+    var days = (oldAge - age) * 356;
+    var total = perDay * days;
+    var resultDiv = document.getElementById('lifetime-supply');
+    var answer = 'You will need $' + total + ' to last you until the ripe old age of ' + oldAge + '.';
+    if(total &gt; 40000){
+    	answer += ' Wow! That\'s a lot!';
+    }else{
+    	answer += ' You seem pretty reasonable';
+    }
+    resultDiv.innerHTML = answer;
+}</code>
+</pre>
+            </section>
+
+            <section>
+                <h3>Let's Answer It (Favorite Things)</h3>
+                <pre>
+<code class="html xml">&lt;div id="favorite-things"&gt;&lt;/div&gt;</code>
+</pre>
+                <pre>
+<code class="javascript">function favoriteThings(){
+    var favoriteThings = ['Rabbits', 'Orange', 'Yogurt', 'Brussel Sprouts', 'Otters'];
+    var resultDiv = document.getElementById('favorite-things');
+    
+    var resultParagraph = document.createElement('p');
+    var result = 'My favorite things are: ';
+    var resultText;
+    
+    for (var i = 0; i &lt; favoriteThings.length; i++) {
+        if (i &lt; favoriteThings.length - 1) {
+            result += favoriteThings[i] + ', ';
+        }
+        else {
+            result += 'and ' + favoriteThings[i] + '.';
+        }
+    }
+    resultText = document.createTextNode(result);
+    resultParagraph.appendChild(resultText);
+    resultDiv.appendChild(resultParagraph);
+}</code>
+</pre>
+            </section>
+
+            <section>
+                <h3>Let's Answer It (MyFriends)</h3>
+                <pre>
+<code class="javascript">function myFriends(){
+    var friends = [
+        {name: 'Santa Claus', hair: 'red'},
+        {name: 'Easter Bunny', hair: 'brown'},
+        {name: 'Tooth Fairy', hair: 'blue'} ];
+    var resultDiv = document.createElement('div');
+    var resultParagraph, resultText, friend;
+     
+    for(var i = 0; i &lt; friends.length; i++){
+        friend = friends[i];
+
+        resultParagraph = document.createElement('p');
+        resultText = document.createTextNode(describeFriend(friend));
+
+        resultParagraph.appendChild(resultText);
+        resultDiv.appendChild(resultParagraph);
+    }
+    document.body.appendChild(resultDiv);
+}</code>
+</pre>
+            </section>
+
+            <section>
+                <h3>DOM Events -- Introduction</h3>
+
+                <p class="fragment left-align">Events are at the core of Web applications.</p>
+                <p class="fragment left-align">Events allow a function (known as an <span class="green">event handler</span>) to run when an action is performed.</p>
+                <p class="fragment left-align">We've already  implemented handlers--the functions for onclick on our buttons!</p>
+            </section>
+
+            <section>
+                <h3>Hooking Up Events</h3>
+                <p class="fragment left-align">Attaching/Detaching - fancy terminology for telling the DOM to add or remove an event handler.</p>
+                <p class="fragment left-align">Three ways of attaching events to a node.
+	                <ul>
+	                	<li class="fragment">on* attributes (in HTML like we've done already)</li>
+	                	<li class="fragment">on* properties</li>
+	                	<li class="fragment">addEventListener (or attachEvent) method</li>
+	                </ul>
+                </p>
+                <pre><code class="fragment html">&lt;div id="change-me"&gt;Hello, world!&lt;/div&gt;</code></pre>
+				<pre><code class="fragment javascript">function changeText() {
+   this.innerHTML = 'My click event changed me!';
+}
+
+var changeDiv = document.getElementById('change-me');
+changeDiv.onclick = changeText;
+changeDiv.addEventListener('click', changeText);</code>
+				</pre>
+				<span class="fragment" onclick="this.innerHTML = 'My click event changed me!'">Hello, world!</span>
+            </section>
+
+			<section>
+				<h3>Hooking Up Events</h3>
+				<p class="fragment left-align">addEventListener vs. on* properties: What's the difference?
+				<ul>
+				<li class="fragment left-align">on* properties overwrite all existing handlers.</li>
+				<li class="fragment left-align">addEventListener adds to the list of handlers.</li>
+				</ul>
+				<pre><code class="fragment javascript">function changeColor(event) {
+   this.style.backgroundColor = '#999';
+}
+changeDiv.onclick = changeText;
+changeDiv.onclick = changeColor;</code></pre>
+				<div class="fragment" onclick="this.style.backgroundColor = '#999'">Hello, world!</div>
+				<pre><code class="fragment javascript">changeDiv.addEventListener('click', changeText);
+changeDiv.addEventListener('click', changeColor);</code></pre>
+<div class="fragment" onclick="this.innerHTML = 'My click event changed me!'; this.style.backgroundColor = '#999';">Hello, world!</div>
+			</section>
+			
+            <section>
+                <h3>Mouse Events</h3>
+                <ul>
+                <li class="fragment left-align">onclick/click - event that fires when a user clicks on an element</li>
+                <li class="fragment left-align" onmouseover="this.style.backgroundColor = '#0066FF';">onmouseover/mouseover - event that fires when a user moves the cursor over an element</li>
+                <li class="fragment left-align" onmouseover="this.style.backgroundColor = '#0066FF';" onmouseout="this.style.backgroundColor = '';">onmouseout/mouseout - event that fires when the cursor exits an element</li>
+                <li class="fragment left-align" onmousedown="this.style.backgroundColor= '#0066FF';">onmousedown/mousedown - event that fires when the mouse button is pressed down on an element</li>
+                <li class="fragment left-align" onmousedown="this.style.backgroundColor = '#0066FF';" onmouseup="this.style.backgroundColor = '';">onmouseup/mouseup - event that fires when the mouse button is released on an element</li>
+                </ul>
+                <div class="fragment" onmousedown="this.style.backgroundColor = '#0066FF';" onmouseup="this.style.backgroundColor = '#6600FF';" onclick="this.style.backgroundColor = '#FF0066'; this.innerHTML = 'I was clicked finally!';">Hello, world!</div>
+            </section>
+
+            <section>
+                <h3>Other Important Events</h3>
+                <ul>                
+				   <li class="fragment left-align">onkeydown/keydown - fires when a key has been pressed. <div><input onkeydown="keydownSample(event)" type="text" placeholder="Type here!" /> <span class="blue" id="keydown-sample">0</span></div></li>
+                   <li class="fragment left-align">onkeyup/keyup - fires when a key has been released.<div><input onkeyup="keyupSample(event)" type="text" placeholder="Type here!" /> <span class="blue" id="keyup-sample">0</span></div></li>
+                   <li class="fragment left-align">onfocus/focus - fires when an element receives focus<div><input onfocus="focusSample(event)" type="text" placeholder="Click here!" /> <span class="blue" id="focus-sample"></span></div></li>
+                   <li class="fragment left-align">onblur/blur - fires when an element loses focus.<div><input onblur="blurSample(event)" type="text" placeholder="Click here and then away!" /> <span class="blue" id="blur-sample"></span></div></li>
+				   <li class="fragment left-align">DOMContentLoaded - fires when the page has been parsed but before resources (images, for example) have downloaded. This can *only* be used with addEventListener.</li>
+				   <li class="fragment left-align"><a href="https://developer.mozilla.org/en-US/docs/Web/Reference/Events">And many, many more</a></li>
+
+
+                </ul>
+            </section>
+
+            <section>
+                <h3>Let's Develop It</h3>
+                <ul>
+                    <li>Remove the onclick handlers in your HTML.</li>
+                    <li>Add click event handlers using JavaScript instead.</li>
+                    <li>Each click event handler should call one of the functions you created in the last Develop It section.</li>
+                    <li>Bonus: Attach multiple click handlers to a single button and have that run all 3 functions.</li>
+                </ul>
+                <pre><code class="fragment javascript">document.addEventListener("DOMContentLoaded", function() {
+   //Attach event handlers here!
+}</code></pre>      
+                <pre><code class="fragment javascript">function clickEventHandler() {
+   //Do work!
+}
+
+var button = document.getElementById('worker-button');
+button.onclick = clickEventHandler;
+button.addEventListener('click', clickEventHandler);</code>
+				</pre>           
+            </section>
+            <section>
+                <h3>Let's Answer It</h3>
+                <pre><code class="javascript">document.addEventListener("DOMContentLoaded", function () {
+    var supplyButton = document.getElementById('supply-button');
+    var favesButton = document.getElementById('faves-button');
+    var friendsButton = document.getElementById('friends-button');
+
+    supplyButton.addEventListener('click', calculate);
+    favesButton.addEventListener('click', favoriteThings);
+    friendsButton.addEventListener('click', myFriends);
+});</code></pre>
+                <pre><code class="javascript">function calculate() {
+   //Brevity is the soul of wit...
+}
+function favoriteThings() {
+   //...
+}
+function myFriends() {
+   //...
+}</code></pre>
+            </section>
+             <section>
+                <h2>Questions?</h2>
+
+                <div style="font-size:1200%; height:100%; margin-top:40%" class="blue">
+                    ?
+
+                    <div class="clear"></div>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <div class="copyright">
+                Javascript ~ Girl Develop It ~ <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/80x15.png"></a>
+            </div>
+        </footer>
+    </div><script src="reveal/lib/js/head.min.js" type="text/javascript">
+</script><script src="reveal/js/reveal.min.js" type="text/javascript">
+</script><script type="text/javascript">
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+    </script>
+</body>
+</html>

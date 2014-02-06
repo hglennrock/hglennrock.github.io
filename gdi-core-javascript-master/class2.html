@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Class 2 ~ Javascript ~ Girl Develop IT</title>
+
+		<meta name="description" content="This is the official Girl Develop It Core Intro Javascript course. Material based on original material by Sara Chipps, Pamela Fox, Alexis Goldstein, Izzy Johnston and Leo Newball.
+
+    The course is meant to be taught in 4 two-hour sections. Each of the slides and practice files are customizable according to the needs of a given class or audience.">
+		<meta name="author" content="Girl Develop It">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<link rel="stylesheet" href="reveal/css/reveal.css">
+		<link rel="stylesheet" href="reveal/css/theme/gdidefault.css" id="theme">
+		<style>
+		    .reveal code {
+    		    max-height: 25%;
+		    }
+		</style>
+
+		<!-- For syntax highlighting -->
+		<!-- light editor<link rel="stylesheet" href="lib/css/light.css">-->
+		<!-- dark editor--><link rel="stylesheet" href="reveal/lib/css/dark.css">
+
+		<!-- If use the PDF print sheet so students can print slides-->
+		
+		<link rel="stylesheet" href="reveal/css/print/pdf.css" type="text/css" media="print">
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+			  <!-- Opening slide -->
+        <section>
+          <img src = "images/gdi_logo_badge.png">
+          <h3>Beginning Javascript</h3>
+          <h4>Class 2</h4>
+        </section>
+        
+        <!-- Welcome-->
+        <section>
+          <h3>Welcome!</h3>
+          <div class = "left-align">
+          <p>Girl Develop It is here to provide affordable and accessible programs to learn software through mentorship and hands-on instruction.</p>
+          <p class ="green">Some "rules"</p>
+          <ul>
+            <li>We are here for you!</li>
+            <li>Every question is important</li>
+            <li>Help each other</li>
+            <li>Have fun</li>
+          </ul>
+          </div>
+        </section>
+        
+       <!-- Arrays -->
+        <section>
+          <h3>Array</h3>
+          <p>An array is a data-type that holds an ordered list of values, of any type:</p>
+          <div class = "fragment">
+            <pre><code contenteditable class = "javascript">
+          var arrayName = [element0, element1, ...];
+            </code></pre>
+          </div>
+          <div class = "fragment">
+            <pre><code contenteditable class = "javascript">
+var rainbowColors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet'];
+var favoriteNumbers = [16, 27, 88];
+var luckyThings = ['Rainbows', 7, 'Horseshoes'];
+            </code></pre>
+          </div>
+          <div class = "fragment">
+            The length property reports the size of the array:
+            <pre><code contenteditable class = "javascript">
+          console.log(rainbowColors.length);
+            </code></pre>
+          </div>
+        </section>
+        
+        <section>
+          <h3>Arrays -- returning values</h3>
+          <p class = "fragment">You can access items with "bracket notation".</p> 
+          <div class = "fragment">
+            The number inside the brackets is called an "index"
+            <pre><code contenteditable class = "javascript">
+          var arrayItem = arrayName[indexNum];
+            </code></pre>
+          </div>
+          <div class = "fragment">
+            Arrays in JavaScript are "zero-indexed", which means we start counting from zero.
+            <pre><code contenteditable class = "javascript">
+      var rainbowColors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet'];
+      var firstColor = rainbowColors[0];
+      var lastColor = rainbowColors[6];
+            </code></pre>
+          </div>
+        </section>
+        
+        <section>
+          <h3>Arrays -- updating values</h3>
+          <div class = "fragment">
+          You can also use bracket notation to change the item in an array:
+            <pre><code contenteditable class = "javascript">
+        var awesomeAnimals = ['Corgis', 'Otters', 'Octopi'];
+        awesomeAnimals[0] = 'Bunnies';
+            </code></pre>
+          </div>
+          <div class = "fragment">
+          Or to add to an array:
+            <pre><code contenteditable class = "javascript">
+          awesomeAnimals[4] = 'Corgis';
+            </code></pre>
+          </div>
+          
+          <div class = "fragment">
+         You can also use the push method (recommended):
+            <pre><code contenteditable class = "javascript">
+          awesomeAnimals.push('Ocelots');
+            </code></pre>
+          </div>
+        </section>
+
+        <!-- Loops-->
+        <section>
+          <h3>Loops</h3>
+          <p>Sometimes you want to go through a piece of code multiple times</p>
+          <p class = "fragment">Why?</p>
+          <ul>
+            <li class = "fragment">Showing a timer count down.</li>
+            <li class = "fragment">Display the results of a search.</li>
+            <li class = "fragment">Sort a list of values.</li>
+          </ul>
+        </section>
+        
+         <section>
+          <h3>The while loop</h3>
+          <p>The while loop tells JS to repeat statements while a condition is true:</p>
+          <pre><code contenteditable class = "javascript">
+      while (expression) {
+        // statements to repeat
+      }
+          </code></pre>
+          <pre><code contenteditable class = "javascript">
+      var x = 0;
+      while (x < 5) {
+        console.log(x);
+        x++;
+      }
+          </code></pre>
+          <div class = "fragment">
+            Review: '++' means increment by 1!
+          </div>
+          <div class = "fragment">
+            <p>If we forget x++, the loop will never end!</p>
+          </div>
+        </section>
+        
+        <section>
+          <h3>The for loop</h3>
+          <p>The for loop is a safer way of looping</p>
+          <pre><code contenteditable class = "javascript">
+          for (initialize; condition; update) {
+            // statements to repeat
+          }
+          </code></pre>
+          <pre><code contenteditable class = "javascript">
+          for (var i = 0; i < 5; i++) {
+            console.log(i);
+          }
+          </code></pre>
+          <div class = "fragment">
+            Less danger of an infinite loop. All conditions are at the top!
+          </div>
+        </section>
+          
+         
+        <section>
+          <h3>Loops and Arrays</h3>
+          Use a for loop to easily look at each item in an array:
+          <pre><code contenteditable class = "javascript">
+var rainbowColors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet'];
+for (var i = 0; i < rainbowColors.length; i++) {
+  console.log(rainbowColors[i]);
+}
+          </code></pre>
+        </section>
+        
+        <!-- Exercise -->
+        <section>
+          <h3>Let's Develop It</h3>
+          <ul>
+            <li>Add a new button to the exercise from last week.</li>
+            <li>Add an onclick to the button for a function called favoriteThings().</li>
+            <li>Create a new function called favoriteThings() in the JavaScript file.</li>
+            <li>In the function, create an array and loop through the results.</li>
+            <li>Write the results to the document like: "My favorite things are: XX, YY, ZZ"</li>
+            <li>Bonus -- add an 'and' in the sentence before the last item</li>
+          </ul>
+        </section>
+
+        <!-- Exercise -->
+        <section>
+          <h3>Let's Answer It</h3>
+		  <pre><code contenteditable class="html xml">&lt;button type="button" onclick="favoriteThings()"&gt; See my favorite things&lt;/button&gt;</code></pre>
+          <pre><code contenteditable class="javascript">function favoriteThings(){
+    var favoriteThings = ['Rabbits', 'Orange', 'Yogurt', 'Brussel Sprouts', 'Otters'];
+    var result = 'My favorite things are: ';
+    for (var i = 0; i &lt; favoriteThings.length; i++) {
+            result += favoriteThings[i] + ', ';
+    }
+    document.write(result);
+}</code></pre>
+        </section>
+
+        <section>
+          <h3>Let's Answer It (Bonus)</h3>
+          <pre><code contenteditable class="javascript">function favoriteThings(){
+    var favoriteThings = ['Rabbits', 'Orange', 'Yogurt', 'Brussel Sprouts', 'Otters'];
+    var result = 'My favorite things are: ';
+    for (var i = 0; i &lt; favoriteThings.length; i++) {
+        if (i &lt; favoriteThings.length - 1) {
+            result += favoriteThings[i] + ', ';
+        }
+        else {
+            result += "and " + favoriteThings[i] + '.';
+        }
+    }
+    document.write(result);
+}</code></pre>
+        </section>
+        <!-- Objects-->
+        <section>
+          <h3>Objects</h3>
+          <p>Objects are a data type that let us store a collection of properties and methods.</p>
+          <pre><code contenteditable class = "javascript">
+          var objectName = { 
+            propertyName: propertyValue,
+            propertyName: propertyValue,
+            ...
+          };
+          </code></pre>
+          <div class = "fragment">
+            <pre><code contenteditable class = "javascript">
+      var charlie = {
+        age: 8,
+        name: "Charlie Brown",
+        likes: ["baseball", "The little red-haired girl"],
+        pet: "Snoopy"
+      };
+          </code></pre>
+          </div>
+        </section>
+        
+        <section>
+          <h3>Objects -- returning values</h3>
+          <p>Access values of "properties" using "dot notation":</p>
+          <div class = "fragment">
+            <pre><code contenteditable class = "javascript">
+      var charlie = {
+        age: 8,
+        name: "Charlie Brown",
+        likes: ["baseball", "The little red-haired girl"],
+        pet: "Snoopy"
+      };
+      </code></pre>
+          </div> 
+          <div class = "fragment">
+            <pre><code contenteditable class = "javascript">
+          var pet = charlie.pet;
+            </code></pre>
+          </div>
+        </section>
+        
+        <section>
+          <h3>Objects -- returning values</h3>
+          <div class = "fragment">
+            Or using "bracket notation" (like arrays):
+            <pre><code contenteditable class = "javascript">
+          var name = charlie['name'];
+            </code></pre>
+          </div>
+          <div class = "fragment">
+            Non-existent properties will return undefined:
+            <pre><code contenteditable class = "javascript">
+          var gender = charlie.gender
+            </code></pre>
+          </div>
+        </section>
+        
+        <section>
+          <h3>Objects -- changing values</h3>
+          <p>Use dot or bracket notation with the assignment operator to change objects.</p>
+          <div class = "fragment">
+          Change existing properties:
+          <pre><code contenteditable class = "javascript">
+          charlie.name = "Chuck";
+          </code></pre>
+          </div>
+          <div class = "fragment">
+            Or add new properties:
+            <pre><code contenteditable class = "javascript">
+          charlie.gender = "male";
+            </code></pre>
+          </div>
+          <div class ="fragment">
+          You can also delete properties:
+          <pre><code contenteditable class = "javascript">
+          delete charlie.gender;
+          </code></pre>
+          </div>
+        </section>
+        
+        <section>
+          <h3>Arrays of Objects</h3>
+          <p>Arrays can hold objects too!</p>
+          <div class = "fragment">
+            <pre><code contenteditable class = "javascript">
+          var peanuts = [
+            {name: "Charlie Brown", 
+             pet: "Snoopy"},
+            {name: "Linus van Pelt",
+             pet: "Blue Blanket"}
+          ];
+            </code></pre>
+          </div>
+          <div class = "fragment">
+            That means we can use a for loop!
+            <pre><code contenteditable class = "javascript">
+  for (var i = 0; i < peanuts.length; i++) {
+    var peanut = peanuts[i];
+    console.log(peanut.name + ' has a pet named ' + peanut.pet + '.');
+  }
+          </code></pre>
+          </div>
+        </section>
+        
+        <section>
+          <h3>Objects in functions</h3>
+          <p>You can pass an object into a function as a parameter</p>
+          <pre><code contenteditable class = "javascript">
+        var peanut ={
+          name: "Charlie Brown", 
+          pet: "Snoopy"
+          };
+          </code></pre>
+          <div class = "fragment">
+            <pre><code contenteditable class = "javascript">
+  function describeCharacter(character){
+    console.log(character.name + ' has a pet named ' + character.pet + '.');
+  }
+            </code></pre>
+          </div>
+         <div class = "fragment">
+            <pre><code contenteditable class = "javascript">
+              describeCharacter(peanut);
+            </code></pre>
+          </div>
+        </section>
+                <!-- Methods-->
+        <section>
+          <h3>Methods</h3>
+          <ul>
+            <li class = "fragment">Methods are functions that are associated with an object</li>
+            <li class = "fragment">The affect or return a value for a specific object</li>
+            <li class = "fragment">Used with dot notation</li>
+          </ul>
+          <div class = "fragment">
+            Previously seen example:
+            <pre><code contenteditable class = "javascript">
+            document.write("Hello, world!");
+            </code></pre>
+          </div>
+        </section>
+            
+        <section>
+          <h3>Methods</h3>
+          <div>
+            <p class="left-align fragment">Methods can be added to objects in two ways.</p>
+            <p class="left-align fragment">Declared with the object.</p>
+            <pre><code class="javascript fragment">var charlie = {
+    name: "Charlie", 
+    sayHello: function () { 
+        document.write("My name is Charlie."); 
+    } 
+};
+
+charlie.sayHello();</code></pre>
+            <p class="left-align fragment">Attached using dot notation.</p>
+            <pre><code class="javascript fragment">var charlie = { name: "Charlie"};
+    
+function sayName() {
+    document.write("My name is Charlie.");
+}
+    
+charlie.sayHello = sayName;
+charlie.sayHello();</code></pre>
+          </div>
+        </section>
+        <section>
+            <h3>this</h3>
+                    <p class="left-align fragment">Inside methods, properties are accessed using the <span class="blue">this</span> keyword.
+                    <p class="fragment left-align"><span class="blue">this</span> refers to the "owner" of the property.</p>
+                    <pre><code contenteditable class = "javascript fragment">
+        var charlie = {
+            name: "Charlie", 
+            sayHello: function () { 
+                document.write("My name is " + this.name + "."); 
+            } 
+        };
+        
+        var lucy = {
+            name: "Lucy van Pelt",
+            sayHello: function () {
+                document.write("My name is " + this.name + ".");
+            }
+        };
+        
+        charlie.sayHello(); //My name is Charlie.
+        lucy.sayHello(); //My name is Lucy van Pelt.
+        </code></pre>
+        </section>
+        <!-- Exercise -->
+        <section>
+          <h3>Let's Develop It</h3>
+          <ul>
+            <li>Add another button that calls the function myFriends() on click.</li>
+            <li>Add a new function called myFriends to the JavaScript.</li>
+            <li>In the function, create an array of friends objects, with their names and hair colors.</li>
+            <li>Use a for loop to go through each friend and describe them.</li>
+            <li>Write the results to the document.</li>
+            <li>Bonus -- make a separate functions that describe the friends</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Let's Answer It</h3>
+          <pre><code contenteditable class="html xml">&lt;button href = "#" onclick="myFriends()"&gt;My friends&lt;/button&gt;</code></pre>
+          <pre><code contenteditable class="javascript">function myFriends(){
+    var friends = [
+        {name: 'Santa Claus',
+        hair: 'red'},
+        {name: 'Easter Bunny',
+        hair: 'brown'},
+        {name: 'Tooth Fairy',
+        hair: 'blue'}
+    ];
+    var results = "My friends: "
+    for(var i = 0; i &lt; friends.length; i++){
+        document.write("My friend " + friend[i].name + " has " + friend[i].hair + " hair. ");
+    }    
+}
+</code></pre>
+        </section>
+
+        <section>
+          <h3>Let's Answer It (Bonus)</h3>
+          <pre><code contenteditable class="javascript">function myFriends(){
+    var friends = [
+        {name: 'Santa Claus',
+        hair: 'red'},
+        {name: 'Easter Bunny',
+        hair: 'brown'},
+        {name: 'Tooth Fairy',
+        hair: 'blue'}
+    ];
+    var results = "My friends: "
+    for(var i = 0; i &lt; friends.length; i++){
+        results += describeFriend(friends[i]);
+    }
+    document.write(results)
+}
+</code></pre>
+        <pre><code class="javascript">function describeFriend(friend){
+    return "My friend " + friend.name + " has " + friend.hair + " hair. ";
+}</code></pre>
+        </section>        
+        
+        <!-- -->
+        <section>
+          <h2>Questions?</h2>
+          <div style = "font-size:1200%; height:100%; margin-top:40%" class ="blue">?
+            <div class ="clear"></div></div>
+        </section>
+			</div>
+  		<footer>
+        <div class="copyright">
+          Javascript ~ Girl Develop It ~
+          <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/80x15.png" /></a>
+        </div>
+      </footer>
+		</div>
+
+
+		<script src="reveal/lib/js/head.min.js"></script>
+		<script src="reveal/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'reveal/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

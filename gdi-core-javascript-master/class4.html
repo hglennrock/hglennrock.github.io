@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Class 4 ~ Javascript ~ Girl Develop IT</title>
+
+		<meta name="description" content="This is the official Girl Develop It Core Intro Javascript course. Material based on original material by Sara Chipps, Pamela Fox, Alexis Goldstein, Izzy Johnston and Leo Newball.
+
+    The course is meant to be taught in 4 two-hour sections. Each of the slides and practice files are customizable according to the needs of a given class or audience.">
+		<meta name="author" content="Girl Develop It">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<link rel="stylesheet" href="reveal/css/reveal.css">
+		<link rel="stylesheet" href="reveal/css/theme/gdidefault.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<!-- light editor<link rel="stylesheet" href="lib/css/light.css">-->
+		<!-- dark editor--><link rel="stylesheet" href="reveal/lib/css/dark.css">
+
+		<!-- If use the PDF print sheet so students can print slides-->
+		
+		<link rel="stylesheet" href="reveal/css/print/pdf.css" type="text/css" media="print">
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+	<script type="text/javascript">
+		function submitExample(e) {
+			var name = document.getElementById('name').value;
+			var popcornPreference = document.getElementById('popcorn').checked;
+			var dinosaurs = document.getElementById('dinosaur');
+			var result = '';
+			var dinosaur = dinosaurs.options[dinosaurs.selectedIndex].value;
+			
+			result += 'Hello! My name is ' + name + '. ';
+			
+			if(popcornPreference) {
+				result += "I like popcorn and "
+			}
+			else {
+				result += "I do not like popcorn, but I do like ";
+			}
+			
+			if(dinosaur === "Other") {
+				result += "dinosaurs!";
+			}
+			else {
+				result += "the " + dinosaur + "!";
+			}
+			
+			document.getElementById('submit-example').innerText = result;
+			e.preventDefault();
+			return false;
+		}
+	</script>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+			  <!-- Opening slide -->
+        <section>
+          <img src = "images/gdi_logo_badge.png">
+          <h3>Beginning Javascript</h3>
+          <h4>Class 4</h4>
+        </section>
+        
+        <!-- Welcome-->
+        <section>
+          <h3>Welcome!</h3>
+          <div class = "left-align">
+          <p>Girl Develop It is here to provide affordable and accessible programs to learn software through mentorship and hands-on instruction.</p>
+          <p class ="green">Some "rules"</p>
+          <ul>
+            <li>We are here for you!</li>
+            <li>Every question is important</li>
+            <li>Help each other</li>
+            <li>Have fun</li>
+          </ul>
+          </div>
+        </section>
+
+<section>
+                <h3>HTML forms</h3>
+
+                <p>HTML Forms allow users to enter information</p>
+
+                <div class="fragment left-align">
+                    <form id="dinosaurs" onsubmit="submitExample(event)">
+                        <input type="text" id="name" placeholder="Enter a name" style="width:300px; padding: 7px; font-size:1em"><br>
+                        <input type = "checkbox" id="popcorn" />I like popcorn<br>
+                        <label>Favorite Dinosaur</label><br>
+                        <select id="dinosaur" style="padding: 7px; font-size:1em">
+                            <option>
+                                Tyrannosaurus Rex
+                            </option>
+
+                            <option>
+                                Triceratops
+                            </option>
+
+                            <option>
+                                Stegosaurus
+                            </option>
+
+                            <option>
+                                Other
+                            </option>
+                        </select><br>
+                        <input type="submit" value="Go!" style="padding: 7px; font-size:1em">
+                    </form>
+                    <span id="submit-example"></span>
+                </div>
+            </section><!-- JavaScript and HTML Forms-->
+            
+            <section>
+                <h3>HTML forms</h3>
+
+                <p>HTML code for a form</p>
+
+                <div class="fragment">
+                    <pre>
+<code contenteditable="" class="html">
+&lt;form action="serverSideHandler.aspx" id="about-me"&gt;
+  &lt;input type = "text" id = "name" placeholder = "Enter a name"/&gt;
+  &lt;input type = "checkbox" id="popcorn" /&gt;I like popcorn
+  &lt;label&gt;Favorite Dinosaur&lt;/label&gt;
+  &lt;select id = "dinosaur"&gt;
+    &lt;option value = "t-rex"&gt;Tyrannosaurus Rex&lt;/option&gt;
+    &lt;option value = "tri"&gt;Triceratops&lt;/option&gt;
+    &lt;option value = "stego"&gt;Stegosaurus&lt;/option&gt;
+    &lt;option value = "other"&gt;Other&lt;/option&gt;
+  &lt;/select&gt;
+  &lt;input type = "submit" value = "Go!" style = "padding: 7px; font-size:1em"/&gt;
+&lt;/form&gt;
+            </code>
+</pre>
+                </div>
+            </section>
+
+            <section>
+                <h3>Values from Forms</h3>
+
+                <p>You can use JavaScript to get values from a form</p>
+
+                <div class="fragment">
+                    <pre>
+<code contenteditable="" class="javascript">
+var name = document.getElementById('name').value;
+document.write(name);
+
+var popcorn = document.getElementById('popcorn').checked;
+document.write(popcorn);
+            </code>
+</pre>
+                </div>
+
+                <div class="fragment">
+                    Or set values of a form
+                    <pre>
+<code contenteditable="" class="javascript">
+name.value = 'Another name!';
+
+popcorn.checked = true;
+            </code>
+</pre>
+                </div>
+            </section>
+
+
+            <section>
+                <h3>Form Submit Event</h3>
+		        <ul>
+		            <li>Forms have a <span class="blue">submit</span> event.</li>
+		            <li class="fragment">The <span class="blue">submit</span> event fires when a user clicks on a submit button or can be fired using the submit() method in JavaScript.</li>
+		            <li class="fragment">Often, the submit event handler is used to validate input before sending it to the server.</li>
+		        </ul>
+                <div class="fragment">
+                    <pre>
+<code contenteditable="" class="javascript">function submitHandler(event) {
+   //Validate input values.
+
+   event.preventDefault();
+}
+var aboutMeForm = document.getElementById('about-me');
+
+aboutMeForm.addEventListener('submit', submitHandler);</code></pre><span class="yellow">event.preventDefault()</span> to prevent the form trying to submit to a server.
+                </div>
+            </section><!-- Exercise-->
+
+
+            <section>
+                <h3>Let's Develop It</h3>
+
+                <ul>
+                    <li>Choose one of your functions made so far.</li>
+                    <li>Create a form to send dynamic data to the function when you click the button.</li>
+                    <li>For example, take in the age, final age, and daily cost for the supply calculator.</li>
+                    <li>Don't forget to add parameters to your existing functions!</li>
+                </ul>
+                <pre><code class="html">&lt;button id="calculate-supply" type="submit"&gt;Calculate Supply&lt;/button&gt;</code></pre>
+                <pre><code class="html">&lt;form id="supply-calculator"&gt;
+   &lt;label for="age"&gt;Age&lt;/label&gt;&lt;input type="text" id="age" /&gt;
+   &lt;label for="maxAge"&gt;Max Age&lt;/label&gt;&lt;input type="text" id="maxAge" /&gt;
+   &lt;label for="cost"&gt;Cost&lt;/label&gt;&lt;input type="text" id="cost" /&gt;
+&lt;/form&gt;</code></pre>
+<pre><code class="javascript">var ageInput = document.getElementById('age');
+var age = ageInput.value;</code></pre>
+	</section><!-- -->
+
+            <section>
+                <h3>Let's Answer It (supply calculator)</h3>
+                <pre><code class="html">&lt;form id="supply-calculator"&gt;
+   &lt;label for="age"&gt;Age:&lt;/label&gt;&lt;input type="text" id="age" /&gt;
+   &lt;label for="maxAge"&gt;Max Age:&lt;/label&gt;&lt;input type="text" id="maxAge" /&gt;
+   &lt;label for="cost"&gt;Cost:&lt;/label&gt;&lt;input type="text" id="cost" /&gt;
+&lt;/form&gt;</code></pre>
+<pre><code class="javascript">document.addEventListener("DOMContentLoaded", function() {
+   var form = document.getElementById('supply-calculator');
+   form.addEventListener('submit', getFormValues); });</code></pre>
+<pre><code class="javascript">function getFormValues(event) {
+   var ageInput = document.getElementById('age');
+   var age = ageInput.value;
+
+   var maxAgeInput = document.getElementById('maxAge');
+   var maxAge = maxAgeInput.value;
+
+   var costInput = document.getElementById('cost');
+   var cost = costInput.value;
+
+   calculate(age, maxAge, dailyCost);
+   event.preventDefault();
+}</code></pre>
+<pre><code class="javascript">function calculate(age, maxAge, dailyCost) { ... }</code></pre>
+	</section><!-- -->
+	
+        <section>
+          <h3>Warning</h3>
+          <div style ="font-size=1.2em" class = "yellow">
+            The following few slides have lots of acronyms and jargon.
+          </div>
+          <div>On behalf of developers everywhere, we apologize</div>
+        </section>
+        
+                <!-- What is an API-->
+        <section>
+          <h3>What is an API?</h3>
+          <ul>
+            <li class = "fragment"><span class = "yellow">A</span>pplication <span class = "yellow">P</span>rogramming <span class = "yellow">I</span>nterface</li>
+            <li class = "fragment">Data structure and rules for accessing an application</li>
+            <li class = "fragment">How we can access information from sites that are not our own (GitHub, Twitter, Meetup, Facebook, Foursquare)</li>
+            <li class="fragment">Primary role: a channel for applications to work together</li>
+          </ul>
+        </section>
+        
+        <section>
+          <h3>Where do I learn about an API?</h3>
+          <p>All (good) APIs have documentation</p>
+          <ul>
+          	<li>GitHub (<a href="http://developer.github.com/" target="_blank">http://developer.github.com/</a>)</li>
+            <li>Facebook (<a href = "https://developers.facebook.com/" target = "_blank">https://developers.facebook.com/</a>)</li>
+            <li>Twitter (<a href = "https://dev.twitter.com/" target = "_blank">https://dev.twitter.com/</a>)</li>
+            <li>Meetup (<a href = "http://www.meetup.com/meetup_api/" target = "_blank">http://www.meetup.com/meetup_api/</a>)</li>
+            <li>FourSquare (<a href = "https://developer.foursquare.com/">https://developer.foursquare.com/</a>)</li>
+        </section>
+
+        <section>
+         <h3>Accessing APIs</h3>
+         <p>Most APIs require an API Key</p>
+         <p class = "fragment green">A what?</p>
+         <ul>
+           <li class = "fragment">API Key or Developer Key is a way for an API to identify you</li>
+           <li class = "fragment">More secure for an API (Know who is using their API)</li>
+           <li class = "fragment">More secure for you -- people can't pretend to be your website</li>
+          </ul>
+          <p class="fragment green">Not all APIs require a key!</p>
+          <ul>
+          <li class="fragment">The APIs we'll be using today (GitHub) don't require a key.</li>
+          </ul>
+        </section>
+        
+        <!-- What is AJAX-->
+        <section>
+          <h3>What is AJAX?</h3>
+          <ul>
+            <li class = "fragment"><span class = "yellow">A</span>synchronous <span class = "yellow">J</span>avaScript <span class = "yellow">a</span>nd <span class = "yellow">X</span>ML</li>
+            <li class = "fragment">Method to communicate to a server or API</li>
+            <li class = "fragment">Asynchronous means:
+              <ul>
+                <li class = "fragment">I ask Twitter for all the tweets ever!</li>
+                <li class = "fragment">That will take a while</li>
+                <li class = "fragment">My <span class = "green">whole website</span> could be <span class = "green">locked up</span> while I wait!</li>
+                <li class = "fragment">Or, my call can be <span class = "blue">'asynchronous'</span> and my website will just <span class = "blue">listen for Twitter's response</span> with one ear, but go about <span class = "blue">normal business until the response arrives</span>.
+              </ul>
+            </li>
+            <li class = "fragment">Requests and results can be in JavaScript or XML</li>
+          </ul>
+        </section>
+        
+        <!-- What is REST-->
+        <section>
+          <h3>What is REST?</h3>
+          <ul>
+            <li class = "fragment"><span class = "yellow">Re</span>presentational <span class = "yellow">S</span>tate <span class = "yellow">T</span>ransfer</li>
+            <li class = "fragment">REST is a way to ask an API for information by using a URL.</li>
+            <li class = "fragment">REST Urls are created with the following syntax:
+              <ul>
+                <li class = "fragment">http://ApiSite.com/method?parameter=value&amp;parameter=value</li>
+                <li class = "fragment"><span class = "blue">Method</span> -- what you want from the API. Defined by API documentations</li>
+                <li class = "fragment"><span class = "blue">Parameter</span> -- a type of filter or restraint. Defined by API documentations</li>
+                <li class = "fragment"><span class = "blue">Value</span> -- value for parameter. Defined by you!</li>
+              </ul>
+            </li>
+            
+          </ul>
+        </section>
+        
+        <!-- What is JSON-->
+        <section>
+          <h3>What is JSON?</h3>
+          <ul>
+            <li class = "fragment"><span class = "yellow">J</span>ava<span class = "yellow">S</span>cript <span class = "yellow">O</span>bject <span class = "yellow">N</span>otation</li>
+            <li class = "fragment">Format for data returned from APIs</li>
+            <li class = "fragment">You've seen it before!</li>
+            <li class = "fragment">JavaScript objects</li>
+          </ul>
+<pre><code class=" fragment javascript">{
+"status": "active",
+"title": "Instructor",
+"bio": "Hi, everybody! I'm an instructor for GDI. My teaching background spans from high school to the present. My professional background spans back-end, front-end, testing, and technical writing.",
+"name": "Dallas Tester",
+"group": {
+   "id": 7208692,
+   "name": "Girl Develop It Seattle",
+   "urlname": "Girl-Develop-It-Seattle",
+   "who": "Nerdettes"
+ }
+}</code></pre>
+        </section>        
+                      
+        <section>
+        	<h3>Making AJAX calls with JavaScript</h3>
+        	<p>Use the XMLHttpRequest object built in to JavaScript</p>
+        	<pre><code class="fragment javascript">var serverRequest = new XMLHttpRequest();
+        	
+serverRequest.onreadystatechange = function() {
+   if(serverRequest.readyState === 4) {
+      console.log(serverRequest.responseText);
+   }
+}
+serverRequest.open('GET', 'URLToEndPoint', true);
+serverRequest.send();</code></pre>
+			<p class="fragment">We're using the onreadystatechange event handler to wait until the request is finished (readyState === 4) and then log the JSON result to the console.</p>
+        </section>
+        
+        <section>
+        	<h3>Let's Develop It</h3>
+        	<ul>
+        		<li>Let's make a call to GitHub's API.</li>
+        		<li>We will get all of the events for the Girl Develop It organization.</li>
+        		<li>Your API is here: https://api.github.com/orgs/girldevelopit/events</li>
+        	</ul>
+        	<pre><code class="javascript">var serverRequest = new XMLHttpRequest();
+        	
+serverRequest.onreadystatechange = function() {
+   if(serverRequest.readyState === 4) {
+      console.log(serverRequest.responseText);
+   }
+}
+serverRequest.open('GET', 'URL', true);
+serverRequest.send();</code></pre>
+        </section>
+        
+        <section>
+        	<h3>Let's Answer It!</h3>
+        	<pre><code class="javascript">var serverRequest = new XMLHttpRequest();
+        	
+serverRequest.onreadystatechange = function() {
+   if(serverRequest.readyState === 4) {
+      console.log(serverRequest.responseText);
+   }
+}
+serverRequest.open('GET', 'https://api.github.com/orgs/girldevelopit/events', true);
+serverRequest.send();</code></pre>
+<pre><code class="javascript">[
+  {
+    "id": "1837010532",
+    "type": "WatchEvent",
+    "actor": {
+      "id": 3051672,
+      "login": "celiala",
+      "url": "https://api.github.com/users/celiala",
+      "avatar_url": "https://2.gravatar.com/avatar/d22540938c49eba7da81d45fa1f0f245?d=https%3A%2…kamai.net%2Fassets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"
+    }
+    ...
+  }
+]</code></pre>
+        </section>
+        
+        <section>
+        	<h3>What is a library?</h3>
+        	<ul>
+        		<li class="fragment">Software libraries contain functions (not books).</li>
+        		<li class="fragment">When you include a library, you can use all the functions in that library</li>
+				<li class="fragment">That means: you get to take advantage of other people's experience!</li>
+				<li class="fragment"><span class="blue">And... Save time!</span></li>
+        	</ul>
+        </section>
+        
+        <section>
+        	<h3>What is jQuery?</h3>
+        	<p class="fragment">jQuery is a <span class="green">library</span> of JavaScript functions.</p>
+        	<p class="fragment">It contains many functions to help simplify your JavaScript programming, including:</p>
+        	<ul>
+        		<li class="fragment">HTML element selection & manipulation</li>
+        		<li class="fragment">CSS manipulation</li>
+        		<li class="fragment">HTML events</li>
+        		<li class="fragment">Calling APIs</li>
+        	</ul>
+        </section>
+        
+        <section>
+        	<h3>Why use jQuery?</h3>
+        	<ul>
+        		<li class="fragment">The most popular JavaScript library</li>
+        		<li class="fragment">jQuery empowers you to "write less, do more."</li>
+        		<li class="fragment">Great <a href="http://docs.jquery.com">documentation and tutorials</a></li>
+        		<li class="fragment">Used by nearly 20 million websites</li>
+        	</ul>
+        </section>
+        
+         <section>
+          <h3>Including jQuery</h3>
+          Two ways to include jQuery on your page:
+          <div class = "fragment">
+            Download the library, store it locally:
+          <pre><code contenteditable class = "html">&lt;script type="text/javascript" src="jquery.js">&lt;/script></code></pre>
+          </div>
+          <div class = "fragment">
+          Include the the live library:
+          <pre><code contenteditable class = "html">&lt;script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">&lt;/script></code></pre>
+          </div>
+          <div class = "fragment">
+            Note: live code can change so be aware when deciding on how you include the code.
+          </div>
+        </section>       
+        
+                <!-- Selectors-->
+        <section>
+          <h3>What Can jQuery Do For Me?</h3>
+          <p>Remember <span class = "green">document.getElementById()</span> and <span class = "green">documet.getElementsByTagName()</span>? </p>
+          <p class = "fragment">jQuery makes it this easy: </p>
+          <ul>
+            <li class = "fragment">Element name (div, p)
+            <pre><code contenteditable class = "javascript">var divs = $('div'); // All divs on page</code></pre>
+            </li>
+            <li class = "fragment">ID name (#mainpicture, #results)
+            <pre><code contenteditable class = "javascript">var img = $('#mainpicture'); //img with id mainpicture</code></pre>
+            </li>
+            <li class = "fragment">Class name (.result, .picture)
+            <pre><code contenteditable class = "javascript">var images = $('.picture'); //All images with class picture</code></pre> 
+            </li>
+          </ul>
+        </section>
+        
+                <section>
+          <h3>What Can jQuery Do For Me?</h3>
+          <ul>
+          	<li class="fragment">Get and set attributes easily:
+	          	<pre><code class="javascript">var img = $('#mainpicture');
+var imageUrl = img.attr('src');
+img.attr('src', 'http://www.website.com/newImage.png');</code></pre>
+          	</li>
+          	<li class="fragment">Get and set CSS properties:
+	          	<pre><code class="javascript">var imageWidth = img.css('width');
+img.css('width', '200px');</code></pre>
+          	</li>
+          	<li class="fragment">Create elements:
+	          	<pre><code class="javascript">var newDiv = $('&lt;div&gt;&lt;/div&gt;');</code></pre>
+          	</li>
+          	<li class="fragment">Get and set the value (replaces innerHTML)
+	          	<pre><code class="javascript">var div = $('#results');
+var divHTML = div.html();
+div.html('&lt;b&gt;This is new HTML!&lt;/b&gt;');</code></pre>
+          	</li>
+          </ul>
+        </section>
+        
+        <section>
+          <h3>What Can jQuery Do For Me?</h3>
+          <ul>
+          	<li class="fragment">Append and prepend text (no more createTextNode):
+	          	<pre><code class="javascript">var div = $('#results');
+div.append('This is new text at the end!');
+div.prepend('This is new text at the beginning!');</code></pre>
+          	</li>
+          	<li class="fragment">Simplify adding events...
+	          	<pre><code class="javascript">var button = $('#calculate-button');
+button.click(function() { ... });</code></pre>
+          	</li>
+          	<li class="fragment">...and the DOMContentLoaded event:
+	          	<pre><code class="javascript">$(document).ready(function() { ... });</code></pre>
+          	</li>
+          	<li class="fragment">Data access is easy, too:
+	          	<pre><code class="javascript">$.ajax({
+   url: 'https://api.github.com...',
+   success: function(data) { //Event handler here }
+});</code></pre>
+          	</li>
+          	<li class="fragment"><a href="http://api.jquery.com/">Along with a LOT more!</a></li>
+          </ul>
+        </section>        
+
+        <section>
+        	<h3>Let's Develop It</h3>
+        	<ul>
+        		<li>Include the jQuery library on your page. jquery.com has a nice shortcut called <span class="green">Quick Access</span> at the bottom of every page.</li>
+        		<li>Update your previous code to use $.ajax for the GitHub API call.</li>
+        		<li>jQuery returns an array of objects from this particular API. Utilize looping to get objects and output their id property.</li>
+        		<li>Feel free to play around with the other functionality of jQuery.</li>
+
+        	</ul>
+        	<pre><code class="javascript">$(document).ready(function() {
+   $.ajax({
+     url: 'https://api.github.com/orgs/girldevelopit/events',
+     success: function(data) {
+        //Do something with the data...
+     }
+   });
+});</code></pre>
+        </section>
+
+        <section>
+        	<h3>Let's Answer It</h3>
+        	<pre><code class="javascript">$(document).ready(function() {
+   $.ajax({
+     url: 'https://api.github.com/orgs/girldevelopit/events',
+     success: function(data) {
+        for(var i = 0; i &lt; data.length; i++) {
+           console.log(data[i].id);
+        } //end for loop
+     } //end success function
+   }); //end AJAX call
+}); //end document ready call</code></pre>
+        </section>                
+        <section>
+          <h2>Questions?</h2>
+          <div style = "font-size:1200%; height:100%; margin-top:40%" class ="blue">?
+            <div class ="clear"></div></div>
+        </section>
+			</div>
+  		<footer>
+        <div class="copyright">
+          Javascript ~ Girl Develop It ~
+          <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/80x15.png" /></a>
+        </div>
+      </footer>
+		</div>
+
+
+		<script src="reveal/lib/js/head.min.js"></script>
+		<script src="reveal/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'reveal/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

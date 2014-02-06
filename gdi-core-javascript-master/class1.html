@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Class 1 ~ Javascript ~ Girl Develop IT</title>
+
+		<meta name="description" content="This is the official Girl Develop It Core Intro Javascript course. Material based on original material by Sara Chipps, Pamela Fox, Alexis Goldstein, Izzy Johnston and Leo Newball.
+
+    The course is meant to be taught in 4 two-hour sections. Each of the slides and practice files are customizable according to the needs of a given class or audience.">
+		<meta name="author" content="Girl Develop It">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<link rel="stylesheet" href="reveal/css/reveal.css">
+		<link rel="stylesheet" href="reveal/css/theme/gdidefault.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<!-- light editor<link rel="stylesheet" href="lib/css/light.css">-->
+		<!-- dark editor--><link rel="stylesheet" href="reveal/lib/css/dark.css">
+
+		<!-- If use the PDF print sheet so students can print slides-->
+		
+		<link rel="stylesheet" href="reveal/css/print/pdf.css" type="text/css" media="print">
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+			  <!-- Opening slide -->
+        <section>
+          <img src = "images/gdi_logo_badge.png">
+          <h3>Beginning Javascript</h3>
+          <h4>Class 1</h4>
+        </section>
+        
+        <!-- Welcome-->
+        <section>
+          <h3>Welcome!</h3>
+          <div class = "left-align">
+          <p>Girl Develop It is here to provide affordable and accessible programs to learn software through mentorship and hands-on instruction.</p>
+          <p class ="green">Some "rules"</p>
+          <ul>
+            <li>We are here for you!</li>
+            <li>Every question is important</li>
+            <li>Help each other</li>
+            <li>Have fun</li>
+          </ul>
+          </div>
+        </section>
+        
+        <section>
+          <h3>Welcome!</h3>
+          <div class = "left-align">
+          <p class = "blue">Tell us about yourself.</p>
+          <ul>
+            <li>Who are you?</li>
+            <li>What do you hope to get out of the class?</li>
+            <li>What is your favorite dinosaur?</li>
+          </ul>
+          </div>
+        </section>
+        
+        
+        <!-- Terms-->
+        <section>
+         <h3>Terms</h3>
+         <ul>
+           <li>
+            <div class = "green">Web design</div>
+            <div>The process of planning, structuring and creating a website.</div>
+           </li>
+           <li>
+            <div class = "green">Web development</div>
+            <div>The process of programming dynamic web applications.
+            <span class="blue">(JavaScript goes here!)</span></div>
+            
+           </li>
+           <li>
+            <div class = "green">Front end</div>
+            <div>The outwardly visible elements of a website or application.
+            <span class ="blue">(JavaScript goes here, too!)</span></div>
+           </li>
+           <li>
+            <div class = "green">Back end</div>
+            <div>The inner workings and functionality of a website or application.
+	        <span class="blue">(Recently, JavaScript has started to arrive here!)</span>
+            </div>
+           </li>
+         </ul>
+        </section>
+        
+        <!-- Nitty gritty 1 - Clients and servers -->
+        <section>
+          <h3>Clients and servers</h3>
+          <p>How your computer accesses websites</p>
+          <img src = "images/client-server.png"/>
+          <p class = "fragment">JavaScript is "client side"</p>
+          <p class = "fragment">Your browser understands it!</p>
+        </section>
+        
+        <!-- Nitty gritty 2 - Tools -->
+        <section>
+          <h3>Tools</h3>
+          <ul>
+            <li>
+              <div class = "yellow">Browser</div>
+              <img src="images/desktop-browsers.jpg" />
+             </li>
+             <li>
+              <div class = "yellow">Browser Developer Tools</div>
+              <ul>
+              	<li>Chrome, IE, and Safari Developer Tools</li>
+              	<li>Firebug for Firefox</li>
+              	<li>Opera Dragonfly</li>
+              </ul>
+             </li>
+             <li>
+              <div class = "yellow">Text Editors</div>
+              <ul>
+	              <li>Eclipse JSDT - Windows and Mac</li>
+	              <li>Aptana - Windows and Mac</li>
+	              <li>Sublime Text - Windows and Mac</li>
+	              <li>Notepad++ - Windows</li>
+             </li>
+          </ul>
+        </section>
+        
+        <!-- History-->
+        <section>
+          <h3>History of JavaScript</h3>
+          <ul>
+            <li class = "fragment">Developed by Brendan Eich of Netscape in 1995 (in 10 days!)</li>
+            <li class="fragment">Originally called Mocha and then LiveScript</li>
+            <li class = "fragment">Java -- Actually, JavaScript has nothing to do with the language Java. Java was just the cool kid in town at the time.</li>
+            <li class = "fragment">Script -- Instructions that a computer can run one line at a time</li>
+          </ul>
+        </section>
+        
+        <!-- History-->
+        <section>
+          <h3>History of JavaScript</h3>
+          <ul>
+          	<li class="fragment">1996 - Netscape 2 is released with JavaScript support</li>
+          	<li class="fragment">1997 - First standardized version of JavaScript</li>
+          	<li class="fragment">2005 - AJAX is first coined. AJAX is used to communicate with servers using JavaScript.</li>
+            <li class = "fragment">2006 - jQuery, a super-popular JavaScript library, debuts.</li>
+            <li class = "fragment">2010 - Node.js debuts. This provided a way for JavaScript to perform back end functions (although not the first).</li>
+            <li class = "fragment">2012 - The spec for JavaScript is "nearly" finished.</li>
+          </ul>
+        </section>
+        
+        <!--What does JavaScript do -->
+        <section>
+          <h3>What does JavaScript do?</h3>
+          <ul>
+          	<li>Primary use is controlling the browser, manipulating Web pages, and enhancing user interaction.</li>
+            <li><a href = "http://fancyapps.com/fancybox/#examples" target = '_blank'>Image Galleries and Lightboxes</a></li>
+            <li><a href = "https://www.google.com/doodles/30th-anniversary-of-pac-man" target = '_blank'>Games and all sorts of Google Doodles</a></li>
+            <li><a href = "http://www.girldevelopit.com/materials" target = '_blank'>Interactions, like show/hide and accordians</a></li>
+            <li><a href = "http://www.girldevelopit.com/classes" target = '_blank'>Retrieving data from other websites (through APIs)</a></li>
+            <li>All sorts of awesomeness, including this slideshow!</li>
+          </ul>
+        </section>
+        
+        <!--Statements -->
+        <section>
+          <h3>Values, Types, and Variables</h3>
+          <ul>
+          <li class="fragment">The fundamental building blocks of programming languages are <span class="blue">values</span>, <span class="green">types</span>, and <span class="yellow">variables</span>.</li>
+          <li class="fragment">A <span class="yellow">variable</span> stores a <span class="blue">value</span>. The <span class="blue">value</span> is defined by a <span class="green">type</span>.</li>
+        </section>
+        
+        <section>
+          <h3>Values</h3>
+          <div class = "left-align">
+            <p class="fragment">Any piece of information that a computer program can store or manipulate.</p>
+            <p class="fragment">For example:</p>
+            <ul>
+            <li class="fragment">The sentence "Hello, world!"</li>
+            <li class="fragment">The number 3.14</li>
+            <li class="fragment">A set of numbers [3.14, 6.09, 9.0805]</li>
+            <li class="fragment">A set of strings ["Welcome", "to", "JavaScript"]</li>
+            </ul>
+          </div>
+        </section>
+        
+        <!-- Variables-->
+        <section>
+          <h3>Variables</h3>
+          <div class = "fragment left-align">
+            <p>A storage location for a value used to perform computations.</p>
+          </div>
+          <div class = "fragment">
+            <p>Declare a variable (give it a name)</p>
+            <pre><code contenteditable class ="javascript">var bananas;</code></pre>
+          </div>
+          <div class = "fragment">
+            <p>Initialize variable (give it a value and a type)</p>
+            <pre><code contenteditable class ="javascript">bananas = 5;</code></pre>
+          </div>
+          <div class = "fragment">
+            <p>Declare AND initialize at the same time!</p>
+            <pre><code contenteditable class ="javascript">var bananas = 5;</code></pre>
+          </div>
+          <div class = "fragment">
+            <p>Change value of variable</p>
+            <pre><code contenteditable class ="javascript">bananas = 4; //I ate a banana.</code></pre>
+          </div>
+        </section>
+
+        <section>
+          <h3>Comments</h3>
+            <div class = "fragment">
+        You can write comments that only you, not the browser, reads
+        <pre><code contenteditable class ="javascript">// comment on one line
+/* comment on 
+   multiple lines */</code></pre>
+          </div>
+          </section>
+        
+        <!-- Data Types-->
+        <section>
+          <h3>Types</h3>
+          <div class = "left-align">
+            <p class="fragment">The definition of the kinds of data a computer program can store or manipulate.</p>
+            <p class="fragment">JavaScript infers the type based on the data. This is known as "loosely typed" in nerd speak.</p>
+          </div>
+        </section>
+        
+        <section>
+        	<h3>Types</h3>
+    		<div class="left-align">Primitives
+	          <ul>
+	          	<li class="fragment">Number - well, a number!</li>
+	          	<li class="fragment">String - a collection of characters.</li>
+	          	<li class="fragment">Boolean - a true or false value.</li>
+	          	<li class="fragment">Array - a collection of values.</li>
+	          	<li class="fragment">null - no valid value or purposely empty.</li>
+	          	<li class="fragment">undefined - no value has been initialized or set yet.</li>
+	          </ul>
+    		</div>
+    		<div class="left-align fragment">Objects<br />
+		    <ul>
+	          	<li class="fragment">Anything that isn't a primitive.</li>
+	          </ul>
+          </div>
+        </section>
+        
+        <section>
+	        <h3>Data Types</h3>
+	        <div class="fragment">
+	          <p>string -- a group of characters in quotes</p>
+		      <pre><code contenteditable class ="javascript">var fruit = "banana";</code></pre>
+          </div>
+          <div class = "fragment">
+            <p>number -- (well, a number)</p>
+            <pre><code contenteditable class ="javascript">var pi = 3.14;
+var year = 2013;
+var bananaTally = 200;</code></pre>
+          </div>
+          <div class = "fragment">
+            <p>boolean -- yes or no</p>
+            <pre><code contenteditable class ="javascript">var skyIsBlue = true;
+var grassIsPink = false;</code></pre>
+	        </div>
+        </section>
+        
+        <!-- Data Types-->
+        <section>
+          <h3>Data types</h3>
+          <div class = "fragment">
+            <p>undefined -- no value yet</p>
+            <pre><code contenteditable class ="javascript">var favoriteDinosaur;</code></pre>
+          </div>
+          <div class = "fragment">
+            <p>null -- a purposely empty value (not the same as 0)</p>
+            <pre><code contenteditable class ="javascript">var myTigersName = null;</code></pre>
+          </div>
+        </section>
+        
+        <!-- Naming rules-->
+        <section>
+          <h3>Naming rules</h3>
+          <div class = "fragment">
+            <p>Begin with a letter, _, or $</p>
+            <p>Contain letters, numbers, _ and $</p>
+            <pre><code contenteditable class ="javascript">var hello;
+var _hello;
+var $hello;
+var hello2;</code></pre>
+          </div>
+          <div class = "fragment">
+            <p>Names are case sensitive</p>
+            <pre><code contenteditable class ="javascript">var hello;
+var Hello;
+var heLLO;</code></pre>
+          </div>
+        </section>
+        
+        <!-- Expressions -->
+        <section>
+          <h3>Mathematical Expressions</h3>
+          <div class = "fragment">
+            <table>
+              <tr><th>Symbol</th><th>Meaning</th></tr>
+              <tr class="fragment"><td>+</td><td>Addition</td></tr>
+              <tr class="fragment"><td>-</td><td>Subtraction</td></tr>
+              <tr class="fragment"><td>*</td><td>Multiplication</td></tr>
+              <tr class="fragment"><td>/</td><td>Division</td></tr>
+              <tr class="fragment"><td>%</td><td>Modulus</td></tr>
+              <tr class="fragment"><td>++</td><td>Increment</td></tr>
+              <tr class="fragment"><td>--</td><td>Decrement</td></tr>
+            </table>
+          </div>
+          <div class = "fragment">
+            <pre><code contenteditable class ="javascript">var bananas = 5;
+var oranges = 2;
+var fruit = bananas + oranges;</code></pre>
+          </div>
+        </section>
+        
+        <!-- -->
+        <section>
+          <h3>String Expressions</h3>
+          <div class = "fragment">
+            <pre><code contenteditable class ="javascript">var name = "Mitch";
+var dinosaur = "Stegosaurus";
+var sentence = "My dinosaur is a " + dinosaur + ". It's name is " + name + ".";
+            </code></pre>
+          </div>
+        </section>
+        <section>
+        	<h3>Including JavaScript</h3>
+        	<div class="fragment left-align">
+        		<p class="fragment">Inline - a script tag with code inside of it.</p>
+        		<pre class="fragment"><code class="html"><span>&lt;body&gt;
+  &lt;script&gt;
+    var dinosaur = "Liopleurodon";
+    ...
+  &lt;/script&gt;
+</span><span>&lt;/body&gt;</span></code></pre>
+        		<p class="fragment">External - a script tag that points to another file.</p>
+				<pre class="fragment"><code class="html"><span>&lt;body&gt;
+  &lt;script src="external.js"&gt;&lt;/script&gt;
+</span><span>&lt;/body&gt;</span></code></pre>
+        	</div>
+        </section>
+        <!-- Exercise-->
+        <section>
+          <h3>Let's Develop It</h3>
+          <p class="left-align">Create a new HTML file</p>
+          <pre><code class ="html">&lt;html>
+  &lt;head>
+    &lt;title>My Site!&lt;/title>
+  &lt;/head>
+  &lt;body>
+    My site!
+  &lt;/body>
+&lt;/html>
+</code></pre>
+		<p class="left-align">Create a new JavaScript file (.js extension) and include it on the page.</p>
+		<pre><code class ="html">&lt;head&gt;
+  &lt;title&gt;My Site!&lt;/title&gt;
+  &lt;script src="calculator.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+</code></pre>
+        </section>
+        
+        <section>
+          <h3>Let's Develop It</h3>
+          <p>Life time supply calculator</p>
+          <p>Ever wonder how much a lifetime supply of your favorite snack or drink is?</p>
+          <ul>
+            <li>Store your age in a variable</li>
+            <li>Store your maximum age in a variable</li>
+            <li>Store an estimated amount per day in a variable</li>
+            <li>Calculate how many you would eat/drink for the rest of your life.</li>
+            <li>Output the result into the page (see below) like so: "You will need NN to last you until your old age of NN"</li>
+          </ul>
+          
+<pre><code contenteditable class ="javascript">
+  document.write(answer);
+
+</code></pre>
+        </section>
+
+    <section>
+        <h3>Let's Answer It!</h3>
+        <div class="left-align">
+<pre><code class="javascript">var age = 26;
+var oldAge = 96;
+var perDay = 2;
+
+var days = (oldAge - age) * 365;
+var total = perDay * days;
+document.write("You will need $" + total + " to last you until the ripe old age of " + oldAge);<br></code></pre>
+    </div>
+</section>
+
+        <!-- Comparison-->
+        <section>
+          <h3>Comparisons</h3>
+          <table>
+            <tr class = "fragment"><td> === </td><td> Equality </td></tr>
+            <tr class = "fragment"><td> !== </td><td> Inequality </td></tr>
+            <tr class = "fragment"><td> > </td><td> Greater than </td></tr>
+            <tr class = "fragment"><td> >= </td><td> Greater than or equal to </td></tr>
+            <tr class = "fragment"><td> < </td><td> Less than </td></tr>
+            <tr class = "fragment"><td> <= </td><td> Less than or equal to </td></tr>
+          </table>
+          <p class = "fragment green"> Don't confuse = (assign a value) <br/>with === (compare a value)</p>
+          <pre class="fragment"><code class="javascript">var name = "Mitch";
+document.write(name === "Mitch"); //true</code></pre>
+        </section>
+        
+        <!-- Logic-->
+        <section>
+          <h3>Logic</h3>
+          <table>
+            <tr class = "fragment"><td> && </td><td> AND </td></tr>
+            <tr class = "fragment"><td> || </td><td> OR </td></tr>
+            <tr class = "fragment"><td> ! </td><td> NOT </td></tr>
+          </table>
+          <div class = "fragment"> 
+            <pre><code contenteditable class ="javascript">var bananas = 5;
+var oranges = 2;
+document.write(bananas > 3 && oranges > 3); //false
+document.write(bananas < 2 || oranges < 2); //false
+document.write(bananas !== oranges); //true</code></pre>
+          </div>
+        </section>
+        
+        <!-- If statement-->
+        <section>
+          <h3>The if statement</h3>
+          <p>JavaScript can run through code based on conditions</p>
+          <div class = "fragment">
+          <pre><code contenteditable class ="javascript">if (condition here){
+  // statement to execute
+}</code></pre>
+          </div>
+          <div class = "fragment">
+<pre><code contenteditable class ="javascript">var bananas = 1;
+if (bananas < 2){
+  document.write("You should buy more bananas!");
+}</code></pre>
+        </div>
+        </section>
+        
+
+        
+        <!-- If/else-->
+        <section>
+          <h3>If/Else Statement</h3>
+          <p>You can use else to perform an alternative action if the "if" fails</p>
+          <pre class="fragment"><code contenteditable class ="javascript">var bananas = 5;
+if (bananas > 3){
+  document.write('Eat a banana!');
+}
+else {
+  document.write('Buy a banana!');
+}</code></pre>
+        </section>
+        
+        <section>
+          <h3>If/Else Statement</h3>
+          <p>You can use else if to have multiple choices</p>
+          <pre class="fragment"><code contenteditable class ="javascript">var age = 20;
+if (age >= 35) {
+  document.write('You can vote AND hold any place in government!');
+}
+else if (age >= 25) {
+  document.write('You can vote AND run for the Senate!');
+}
+else if (age >= 18) {
+  document.write('You can vote!');
+}
+else {
+  document.write('You have no voice in government (yet)!');
+}</code></pre>
+        </section>
+        
+        <!-- Exercise-->
+        <section>
+            <h3>Let's Develop It!</h3>
+            <p class = "left-align">Add an if/else statement to our lifetime supply calculator so that if the lifetime supply is greater than 40,000, you say "Wow! That's a lot!" otherwise, say "You seem pretty reasonable!"</p>
+        </section>
+
+        <section>
+            <h3>Let's Answer It!</h3>
+            <pre><code class="javascript">var age = 26;
+var oldAge = 96;
+var perDay = 2;
+
+var days = (oldAge - age) * 356;
+var total = perDay * days;
+if(total > 40000){
+    document.write("You will need " + total + " to last you until the ripe old age of " + oldAge + ". Wow! That's a lot!");
+}
+else{
+    document.write("You will need " + total + " to last you until the ripe old age of " + oldAge + ". You seem pretty reasonable");
+}</code></pre>
+        </section>
+        
+        <!-- Functions-->
+        <section>
+          <h3>Functions</h3>
+          <p class = "fragment">Functions are re-usable collections of statements</p>
+          <div class = "fragment">
+            Declare a function
+         <pre><code contenteditable class ="javascript">function sayHi(){
+  document.write('Hi!');
+}</code></pre>
+          </div>
+          <div class = "fragment">
+            Call the function
+         <pre><code contenteditable class ="javascript">sayHi();</code></pre>
+          </div>
+        </section>
+        
+        <!-- Functions cont.-->
+        <section>
+          <h3>Arguments</h3>
+          <p class = "fragment">Functions can take named values known as arguments.</p>
+          <div class = "fragment">
+         <pre><code contenteditable class ="javascript">function sayHi(name){
+  console.log('Hi' + name + '!');
+}
+
+sayHi('Mitch, the dinosaur');
+sayHi('Harold, the hippo');
+            
+var mouseName = 'Pip, the mouse';
+sayHi(mouseName);</code></pre>
+          </div>
+        </section>
+        
+        <!-- Functions cont.-->
+        <section>
+          <h3>Arguments</h3>
+          <p class = "fragment">Functions can take MULTIPLE named arguments</p>
+          <div class = "fragment">
+         <pre><code contenteditable class ="javascript">function addNumbers(num1, num2){
+  var result = num1 + num2;
+  document.write(result);
+}
+          
+addNumbers(5, 6);
+            
+var number1 = 12;
+var number2 = 30;
+addNumbers(number1, number2);</code></pre>
+          </div>
+        </section>
+        
+        <!-- Functions cont.-->
+        <section>
+          <h3>Return values</h3>
+          <p class = "fragment">Functions can return a value to you (such as the result of addition).</p>
+          <div class = "fragment">
+         <pre><code contenteditable class ="javascript">function addNumbers(num1, num2){
+  var result = num1 + num2;
+  return result; //Anything after this line won't be read
+}
+
+var meaningOfLife  = addNumbers(12, 30);
+document.write(meaningOfLife);</code></pre>
+          </div>
+        </section>
+        
+        <!-- Functions cont.-->
+        <section>
+          <h3>Variable Scope</h3>
+          <p class = "fragment">JavaScript have "function scope". That means the variables are only accessible in the function where they are defined.</p>
+          <div class = "fragment">
+            A variable with "local" scope:
+         <pre><code contenteditable class ="javascript">function addNumbers(num1, num2){
+  var result = num1 + num2;
+  return result;
+}
+  
+var meaningOfLife  = addNumbers(12, 30);
+document.write(result);
+//This will show as undefined because the result variable only exists inside the addNumbers function.</code></pre>
+          </div> 
+        </section>
+        
+        <!-- Exercise-->
+        <section>
+          <h3>Let's Develop It!</h3>
+          <div>
+            <p>Wrap the lifetime supply calculator in a function called calculate()</p>
+            <p>Add a button to the html that calls the function when it is clicked</p>
+        <pre><code contenteditable class ="html">&lt;button type="button" onclick="calculate()">
+  Calculate life time supply
+&lt;/button></code></pre>
+          </div>
+        </section>
+
+        <section>
+          <h3>Let's Answer It!</h3>
+		  <pre><code contenteditable class ="javascript">function calculate(){
+  var age = 26;
+  var oldAge = 96;
+  var perDay = 2;
+  var days = (oldAge - age) * 356;
+  var total = perDay * days;
+  if(total > 40000) {
+    document.write("You will need " + total + " to last you until the ripe old age of " + oldAge + ". Wow! That's a lot!"); }
+  else {
+    document.write("You will need " + total + " to last you until the ripe old age of " + oldAge + ". You seem pretty reasonable"); } 
+}</code></pre>
+        </section>
+        
+        <!-- -->
+        <section>
+          <h2>Questions?</h2>
+          <div style = "font-size:1200%; height:100%; margin-top:40%" class ="blue">?
+            <div class ="clear"></div></div>
+        </section>
+			</div>
+  		<footer>
+        <div class="copyright">
+          Javascript ~ Girl Develop It ~
+          <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/80x15.png" /></a>
+        </div>
+      </footer>
+		</div>
+
+
+		<script src="reveal/lib/js/head.min.js"></script>
+		<script src="reveal/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'reveal/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
