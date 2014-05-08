@@ -252,6 +252,16 @@ amazon_link2:"http://www.amazon.com/Hyperspace-Scientific-Odyssey-Parallel-Unive
 					</ul>
 			</section>
 
+				<section>
+					<h3>Entity Modeling</h3>
+					<ul>
+						<li>Entity type - any type of object that we want to store data about</li>
+						<li>Attribute - the data that we want to keep about each entity</li>
+						<li>Primary key - the attribute used to identify a specific entity</li>
+						<li>Composite key - a primary key made up of a unique combination of attributes</li>
+					</ul>
+				</section>
+
         <section>
             <h3>Relationships</h3>
             <img src="images/coursetrackingexamplerdbms.jpg">
@@ -265,16 +275,18 @@ amazon_link2:"http://www.amazon.com/Hyperspace-Scientific-Odyssey-Parallel-Unive
         <section>
             <h3>Modeling Relationships</h3>
                 <p>Or... How does a non-relational DB work?</p>
+								<p>Recommended reading:</p> <p><a href="http://www.ignoredbydinosaurs.com/2013/05/explaining-non-relational-databases-my-mom">Explaining Non-Relational Databases to My Mom</a></p>
         </section>
 
         <section>
             <h3>Types of Relationships</h3>
                 <ul>
-                    <li>One-to-One</li>
-                    <li>One-to-Many</li>
-                    <li>Many-to-One</li>
-                    <li>Many-to-Many</li>
-                </ul>
+                    <li>One-to-One: A car model is made by one company.</li>
+                    <li>One-to-Many: One class has many students.</li>
+                    <li>Many-to-One: Many employees work in one department.</li>
+                    <li>Many-to-Many: Many orders have many products.</li>
+                </ul><br><br>
+								<p><a href="http://www.databasedesign.co.uk/bookdatabasesafirstcourse/chap3/chap3.htm">Deeper reading on Entity Relationship Modeling</a></p>
         </section>
 
         <section>
@@ -298,7 +310,41 @@ amazon_link2:"http://www.amazon.com/Hyperspace-Scientific-Odyssey-Parallel-Unive
         </section>
 
         <section>
-            <h3 class="center"><a href="exercises.html#exercise2">Exercise Time!</a></h3>
+            <h3>Exercise Time</h3>
+						<h3 id="exercise2">Modeling Movies!</h3>
+        <p>Making movies takes lots of relationships - Actors, Producers, Studios - we don't want to duplicate data, so let's form some relationships!</p>
+
+        <ul>
+            <li>First, create a new file - call it movies.json</li>
+            <li>Start with three arrays with four or more objects -
+                <pre>
+Movies = [{}, {}, {}, {}]
+Actors = [{}, {}, {}, {}]
+Studios = [{}, {}, {}, {}]
+                </pre>
+            </li>
+					</section>
+					<section>
+						<h3>Exercise Time</h3>
+						<h3 id="exercise2">Modeling Movies!</h3>
+            <li>We're going to model four different movies!
+                <ul>
+                    <li><a href="http://www.imdb.com/title/tt1707386/">Les Misérables</a></li>
+                    <li><a href="http://www.imdb.com/title/tt0821642">The Soloist</a></li>
+                    <li><a href="http://www.imdb.com/title/tt0988045/">Sherlock Holmes</a></li>
+                    <li><a href="http://www.imdb.com/title/tt1446192/">Rise of the Guardians</a></li>
+                </ul>
+            </li>
+					</section>
+					<section>
+						<h3>Exercise Time</h3>
+						<h3 id="exercise2">Modeling Movies!</h3>
+            <li>These share actors, so we're going to assign an ID to each actor, studio, and movie.</li>
+            <li>In each movie there are lots of actors - list only the top-billed actors for simplicity's sake. Create an array to hold just the IDs of the actors.</li>
+            <li>Reference the ID of the actor you want to name by looking in your list of actors, and using the ID field.</li>
+            <li>Do the same for the studios- reference them by ID (but you don't have to use an array)</li>
+            <li>Try to simplify the studios - don't distinguish between Universal Studios and Universal Studios France. We're not IMDB :)</li>
+        </ul>
         </section>
 
         <section>
