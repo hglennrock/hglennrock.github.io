@@ -70,6 +70,24 @@
         </section>
 
 				<section>
+					<h3>Why SQLite</h3>
+					<ul>
+						<li>Flexible relational database that works with a huge range of software and hardware</li>
+						<li>Embeddable database with small footprint, often used for development</li>
+						<li>Supported by languages such as</li>
+						<li><ul>
+							<li>C</li>
+							<li>Java</li>
+							<li>Perl</li>
+							<li>Ruby</li>
+							<li>Python</li>
+							<li>Objective C</li>
+							<li>...and more!</li>
+						</ul></li>
+					</ul>
+				</section>
+
+				<section>
 					<h3>Installing SQLite3</h3>
 					<h4>Windows</h4>
 					<ul>
@@ -92,8 +110,81 @@ Homebrew 0.9.5</code></pre>
 				</section>
 
 				<section>
-					<h3>Testing our SQLite3 Installation</h3>
-					<p>Run "sqlite3 test.db" in Terminal/Git Bash
+          <h3>Intro to Terminal</h3>
+          <p>Mac & Linux users: Open <strong>Terminal</strong></p>
+          <p>Windows users: Open <strong>Git-Bash</strong></p>
+          <br >
+          <p>We will not be using Windows "cmd" program, as it uses a different syntax than *NIX systems.</p>
+        </section>
+
+				 <section>
+          <h3>Terminal Cheatsheet</h3>
+          <table style="font-size: 20px; line-height: 1.4em;">
+            <tr>
+              <td>.</td>
+              <td>the current directory- ex: "touch ./wow.txt"</td>
+            </tr>
+            <tr>
+              <td>..</td>
+              <td>the parent of current directory - ex: "cd ../RubyParty"</td>
+            </tr>
+            <tr>
+              <td>~</td>
+              <td>the root directory- ex: "cd ~/Pictures"</td>
+            </tr>
+            <tr>
+              <td>cd [location]</td>
+              <td>"change directory" to [location]</td>
+            </tr>
+            <tr>
+              <td>pwd</td>
+              <td>"present working directory" - where am I?</td>
+            </tr>
+            <tr>
+              <td>ls -al</td>
+              <td>"list all" of the contents of current directory, including invisible ones</td>
+            </tr>
+            <tr>
+              <td>touch [filename.extension]</td>
+              <td>create a file called filename.extension in the current directory</td>
+            </tr>
+            <tr>
+              <td>mkdir [directoryname]</td>
+              <td>create a directory called directoryname in the current directory</td>
+            </tr>
+            <tr>
+              <td>rm [filename]</td>
+              <td>"remove" (delete) the file called filename</td>
+            </tr>
+            <tr>
+              <td>rm -rf [directoryname]</td>
+              <td>"remove recursively with force" the directory called directoryname</td>
+            </tr>
+            <tr>
+              <td>clear OR cmd+k</td>
+              <td>clear the terminal screen</td>
+            </tr>
+            <tr>
+              <td>help</td>
+              <td>lists all possible commands</td>
+            </tr>
+            <tr>
+              <td>man [command]</td>
+              <td>displays the manual for command</td>
+            </tr>
+          </table>
+        </section>
+
+				<section>
+					<h3>Let's Develop It!</h3>
+        	<p>Working in the terminal, create a directory called gdi_db in the location of your choosing (Desktop? Documents? Somewhere you'll be able to find it again!).</p>
+        </section>
+
+
+				<section>
+					<h3>Let's Develop It! (continued)</h3>
+					<h4>Testing our SQLite3 Installation</h4>
+					<p>Run "sqlite3 test.db" in Terminal/Git Bash</p>
 					<pre><code>$ sqlite3 test.db
 SQLite version 3.7.8 2011-09-19 14:49:19
 Enter ".help" for instructions
@@ -103,7 +194,229 @@ sqlite></pre></code>
 				</section>
 
 				<section>
+					<h3>SQLite3 Help</h3>
+					<p>Enter .help for instructions</p>
+					<p>We will go through many of these. For now, note that you can use .exit or .quit to exit the Sqlite prompt</p>
+				</section>
 
+				<section>
+					<h3>The Chinook Database</h3>
+					<ul>
+						<li><a href="http://chinookdatabase.codeplex.com/">Download the Chinook Database files</a></li>
+						<li>Open source sample database</li>
+						<li>Available for many popular RDBMS, including SQL Server, Oracle, MySQL, PostgreSQL, and SQLite</li>
+						<li>Data model for a digital media store</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>The Chinook Database</h3>
+					<img src="images/chinookschema.png">
+				</section>
+
+				<section>
+					<h3>Installing the Chinook Database</h3>
+					<ul>
+						<li>Move the zipped file you downloaded to the folder you just created</li>
+						<li>Unzip ChinookDatabase1.4_CompleteVersion.zip</li>
+						<li>Execute the following command to open the Chinook_Sqlite.sqlite database</li>
+					</ul>
+					<pre><code contenteditable class="JavaScript">sqlite3 Chinook_Sqlite.sqlite</code></pre>
+				</section>
+
+				<section>
+					<h3>Database Schemas</h3>
+					<ul>
+					<li>A structure described in a formal language</li>
+					<li>Acts as a blueprint for how the database is constructed</li>
+					<li>In a relational database, the schema defines:
+						<ul>
+							<li>tables</li>
+							<li>fields</li>
+							<li>relationships</li>
+							<li>views</li>
+							<li>indexes</li>
+							<li>functions</li>
+							<li>and other elements</li>
+						</ul>
+					</li>
+				</section>
+
+				<section>
+					<h3>Tables</h3>
+					<p>In a relational database, a table is an organized set of data using columns and rows.</p>
+					<img src="images/table.gif"/>
+					<p>You may sometimes hear a table referred to as a "relation".</p>
+				</section>
+
+				<section>
+					<h3>View Tables</h3>
+					<p>Let's check out the tables included in the Chinook database:</p>
+					<pre><code contenteditable class="JavaScript">sqilte> .tables
+Album          Employee       InvoiceLine    PlaylistTrack
+Artist         Genre          MediaType      Track
+Customer       Invoice        Playlist
+sqlite>
+</code></pre>
+				</section>
+
+				<section>
+					<h3>Table Schemas</h3>
+					<p>We can also check out the schema for the tables.</p>
+					<pre><code contenteditable class="JavaScript">sqilte> .schema Artist
+CREATE TABLE [Artist]
+(
+    [ArtistId] INTEGER  NOT NULL,
+    [Name] NVARCHAR(120),
+    CONSTRAINT [PK_Artist] PRIMARY KEY  ([ArtistId])
+);
+CREATE UNIQUE INDEX [IPK_Artist] ON [Artist]([ArtistId]);
+</code></pre>
+					<p>What are the columns in the Artist table?</p>
+				</section>
+
+				<section>
+					<h3>GUI Tools</h3>
+						<p>Many GUI tools exist for SQLite.<p>
+						<p>Let's download <a href="https://addons.mozilla.org/en-US/firefox/addon/sqlite-manager/">SQLite Manager</a>, an add-on for Firefox</p>
+						<p>(First install Firefox, if you do not have it already.)</p>
+						<img src="images/SQLiteManager.png"/>
+				</section>
+
+				<section>
+					<h3>Chinook Database in SQLite Manager</h3>
+					<ul>
+						<li>Open SQLite Manager in Firefox Tools</li>
+						<li>Database -> Connect Database</li>
+						<li>Navigate to Chinook_Sqlite.sqlite in your directory</li>
+						<li>Click "Open"</li>
+						<img src="images/SQLiteManagerPlugin.png"/>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Let's Develop It!</h3>
+					<p>Spend a few minutes exploring the SQLite Manager<p>
+					<ul>
+						<li>Pair up with your neighbor and discuss what you find.</li>
+						<li>View a few tables.</li>
+						<li>What do you find in the Structure tab? What are some different data types you can find?</li>
+						<li>How about the Browse and Search tab?</li>
+						<li>We can ignore Execute SQL and DB Settings for now. Just focus on what we see in the data.</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>The SELECT Statement</h3>
+					<ul>
+						<li>We use the SELECT command to show data from a database</li>
+						<li>The output from a SELECT statement is always a grid of rows and columns.</li>
+						<li>The most simple SELECT statement retrieves all values from a single table</li>
+					</ul>
+					<pre><code contenteditable class="JavaScript">sqilte> SELECT * FROM Album;
+1|For Those About To Rock We Salute You|1
+2|Balls to the Wall|2
+3|Restless and Wild|2
+4|Let There Be Rock|1
+5|Big Ones|3
+</code></pre>
+					<p>This will return all of the results from the table, which could be expensive.</p>
+				</section>
+
+				<section>
+					<h3>SELECT .. WHERE</h3>
+					<p>You can have only a subset of rows returned by using the WHERE clause</p>
+					<pre><code contenteditable class="JavaScript">sqilte> SELECT *
+   ...> FROM Customer
+   ...> WHERE FirstName = "Mark";
+14|Mark|Philips|Telus|8210 111 ST NW|Edmonton|AB|Canada|T6G 2C7|+1 (780) 434-4554|+1 (780) 434-5565|mphilips12@shaw.ca|5
+55|Mark|Taylor||421 Bourke Street|Sidney|NSW|Australia|2010|+61 (02) 9332 3633||mark.taylor@yahoo.au|4
+sqlite>
+</code></pre>
+					<p>Alternatively, the SELECT .. WHERE statement can be made on one line:</p>
+					<pre><code contenteditable class="JavaScript">SELECT * FROM Customer WHERE FirstName = "Mark";</code></pre>
+				</section>
+
+				<section>
+					<h3>WHERE Clause Operators</h3>
+					<table style="font-size: 20px; line-height: 1.4em;">
+						<tr>
+							<td>Operator</td>
+							<td>Description</td>
+						</tr>
+						<tr>
+							<td>=</td>
+							<td>Equal</td>
+						</tr>
+						<tr>
+							<td>&lt;&gt;</td>
+							<td>Not equal. <em>Note:</em> In some versions of SQL, this may be written as !=</td>
+						</tr>
+						<tr>
+							<td>&gt;</td>
+							<td>Greater than</td>
+						</tr>
+						<tr>
+							<td>&lt;</td>
+							<td>Less than</td>
+						</tr>
+						<tr>
+							<td>&gt;=</td>
+							<td>Greater than or equal</td>
+						</tr>
+						<tr>
+							<td>&lt;=</td>
+							<td>Less than or equal</td>
+						</tr>
+						<tr>
+							<td>BETWEEN</td>
+							<td>Between an inclusive range</td>
+						</tr>
+						<tr>
+							<td>LIKE</td>
+							<td>Search for a pattern</td>
+						</tr>
+						<tr>
+							<td>IN</td>
+							<td>To specify multipl possible values for a column</td>
+						</tr>
+					</table>
+				</section>
+
+				<section>
+					<h3>Not Equal</h3>
+					<pre><code contenteditable class="JavaScript">SELECT * FROM Customer WHERE FirstName <> "Mark";
+</code></pre>
+				</section>
+
+				<section>
+					<h3>Greater Than</h3>
+					<pre><code contenteditable class="JavaScript">SELECT * FROM Employee WHERE BirthDate > "1970-01-01";
+</code></pre>
+				</section>
+
+				<section>
+					<h3>Less Than</h3>
+					<pre><code contenteditable class="JavaScript">SELECT * FROM Employee WHERE BirthDate < "1970-01-01";
+</code></pre>
+				</section>
+
+				<section>
+					<h3>BETWEEN</h3>
+					<pre><code contenteditable class="JavaScript">SELECT * FROM Employee WHERE BirthDate BETWEEN "1965-01-01" AND "1971-01-01";
+</code></pre>
+				</section>
+
+				<section>
+					<h3>LIKE</h3>
+					<pre><code contenteditable class="JavaScript">SELECT * FROM Track WHERE Name LIKE "%Love%";
+</code></pre>
+				</section>
+
+				<section>
+					<h3>IN</h3>
+					<pre><code contenteditable class="JavaScript">SELECT * FROM Track WHERE MediaTypeId IN (1,2);
+</code></pre>
 				</section>
 
         <section>
