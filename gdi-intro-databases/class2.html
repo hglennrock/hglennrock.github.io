@@ -94,6 +94,9 @@
 						<li><a href="http://git-scm.com/downloads">Install Git</a> (Windows only)</li>
 						<ul><li>We will be using Git Bash instead of the Command Line</li></ul>
 						<li><a href="http://www.sqlite.org/download.html">Install SQLite3</a></li>
+						<li>Download “sqlite-shell” and “sqlite-dll” archive files</li>
+						<li>Unpack sqlite-dll files and move them to C:\WINDOWS\system32 folder</li>
+						<li>Launch sqlite-shell</li>
 					</ul>
 				</section>
 
@@ -183,14 +186,16 @@ Homebrew 0.9.5</code></pre>
 
 				<section>
 					<h3>Let's Develop It! (continued)</h3>
-					<h4>Testing our SQLite3 Installation</h4>
-					<p>Run "sqlite3 test.db" in Terminal/Git Bash</p>
-					<pre><code>$ sqlite3 test.db
+					<h4>Testing our SQLite3 Installation (Mac)</h4>
+					<p>Run "sqlite3" in Terminal</p>
+					<pre><code>$ sqlite3
 SQLite version 3.7.8 2011-09-19 14:49:19
 Enter ".help" for instructions
 Enter SQL statements terminated with a ";"
 sqlite></pre></code>
-					<p>This created a new database named "test.db". If successful, you will see the version info and the sqlite prompt</p>
+					<p>If successful, you will see the version info and the sqlite prompt</p>
+					<h4>Testing our SQLite3 Installation (Windows)</h4>
+					<p>Open sqlite-shell.</p>
 				</section>
 
 				<section>
@@ -221,7 +226,10 @@ sqlite></pre></code>
 						<li>Unzip ChinookDatabase1.4_CompleteVersion.zip</li>
 						<li>Execute the following command to open the Chinook_Sqlite.sqlite database</li>
 					</ul>
+					<h4>Mac:</h4>
 					<pre><code contenteditable class="JavaScript">sqlite3 Chinook_Sqlite.sqlite</code></pre>
+					<h4>Windows:</h4>
+					<pre><code contenteditable class="JavaScript">.open C:/Downloads/ChinookDatabase1.4_CompleteVersion/Chinook_Sqlite.sqlite</code></pre>
 				</section>
 
 				<section>
