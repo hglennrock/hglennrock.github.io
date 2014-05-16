@@ -70,7 +70,7 @@
         </section>
 
 				<section>
-					<h3>Why SQLite</h3>
+					<h3>Why SQLite?</h3>
 					<ul>
 						<li>Flexible relational database that works with a huge range of software and hardware</li>
 						<li>Embeddable database with small footprint, often used for development</li>
@@ -88,12 +88,44 @@
 				</section>
 
 				<section>
+					<h3>SQLite - Distinctive Features</h3>
+					<ul>
+						<li>Zero-Configuration</li>
+						<li>Serverless - no separate server process is required. SQLite reads and writes direclty to disk.</li>
+						<li>Single, compact database file</li>
+						<li>Stable cross-platform database file</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>SQLite - What's it good for?</h3>
+					<ul>
+						<li>Desktop applications</li>
+						<li>Mobile apps</li>
+						<li>Low traffic websites</li>
+						<li>Ad hoc command line data analysis</li>
+						<li>Stand-in for enterprise RDBMS during testing or demos</li>
+					</ul>
+					<br><br>
+					<h4>What's it not good for?</h4>
+					<ul>
+						<li>Client/Server applications</li>
+						<li>High volume websites</li>
+						<li>Very large datasets</li>
+						<li>High concurrency (simultaneous readers)</li>
+					</ul>
+				</section>
+
+				<section>
 					<h3>Installing SQLite3</h3>
 					<h4>Windows</h4>
 					<ul>
 						<li><a href="http://git-scm.com/downloads">Install Git</a> (Windows only)</li>
 						<ul><li>We will be using Git Bash instead of the Command Line</li></ul>
 						<li><a href="http://www.sqlite.org/download.html">Install SQLite3</a></li>
+						<li>Download “sqlite-shell” and “sqlite-dll” archive files</li>
+						<li>Unpack sqlite-dll files and move them to C:\WINDOWS\system32 folder</li>
+						<li>Launch sqlite-shell</li>
 					</ul>
 				</section>
 
@@ -183,14 +215,16 @@ Homebrew 0.9.5</code></pre>
 
 				<section>
 					<h3>Let's Develop It! (continued)</h3>
-					<h4>Testing our SQLite3 Installation</h4>
-					<p>Run "sqlite3 test.db" in Terminal/Git Bash</p>
-					<pre><code>$ sqlite3 test.db
+					<h4>Testing our SQLite3 Installation (Mac)</h4>
+					<p>Run "sqlite3" in Terminal</p>
+					<pre><code>$ sqlite3
 SQLite version 3.7.8 2011-09-19 14:49:19
 Enter ".help" for instructions
 Enter SQL statements terminated with a ";"
 sqlite></pre></code>
-					<p>This created a new database named "test.db". If successful, you will see the version info and the sqlite prompt</p>
+					<p>If successful, you will see the version info and the sqlite prompt</p>
+					<h4>Testing our SQLite3 Installation (Windows)</h4>
+					<p>Open sqlite-shell.</p>
 				</section>
 
 				<section>
@@ -221,7 +255,10 @@ sqlite></pre></code>
 						<li>Unzip ChinookDatabase1.4_CompleteVersion.zip</li>
 						<li>Execute the following command to open the Chinook_Sqlite.sqlite database</li>
 					</ul>
+					<h4>Mac:</h4>
 					<pre><code contenteditable class="JavaScript">sqlite3 Chinook_Sqlite.sqlite</code></pre>
+					<h4>Windows:</h4>
+					<pre><code contenteditable class="JavaScript">.open C:/Downloads/ChinookDatabase1.4_CompleteVersion/Chinook_Sqlite.sqlite</code></pre>
 				</section>
 
 				<section>
@@ -252,7 +289,7 @@ sqlite></pre></code>
 				<section>
 					<h3>View Tables</h3>
 					<p>Let's check out the tables included in the Chinook database:</p>
-					<pre><code contenteditable class="JavaScript">sqilte> .tables
+					<pre><code contenteditable class="JavaScript">sqlite> .tables
 Album          Employee       InvoiceLine    PlaylistTrack
 Artist         Genre          MediaType      Track
 Customer       Invoice        Playlist
@@ -263,7 +300,7 @@ sqlite>
 				<section>
 					<h3>Table Schemas</h3>
 					<p>We can also check out the schema for the tables.</p>
-					<pre><code contenteditable class="JavaScript">sqilte> .schema Artist
+					<pre><code contenteditable class="JavaScript">sqlite> .schema Artist
 CREATE TABLE [Artist]
 (
     [ArtistId] INTEGER  NOT NULL,
@@ -313,7 +350,7 @@ CREATE UNIQUE INDEX [IPK_Artist] ON [Artist]([ArtistId]);
 						<li>The output from a SELECT statement is always a grid of rows and columns.</li>
 						<li>The most simple SELECT statement retrieves all values from a single table</li>
 					</ul>
-					<pre><code contenteditable class="JavaScript">sqilte> SELECT * FROM Album;
+					<pre><code contenteditable class="JavaScript">sqlite> SELECT * FROM Album;
 1|For Those About To Rock We Salute You|1
 2|Balls to the Wall|2
 3|Restless and Wild|2
@@ -326,7 +363,7 @@ CREATE UNIQUE INDEX [IPK_Artist] ON [Artist]([ArtistId]);
 				<section>
 					<h3>SELECT .. WHERE</h3>
 					<p>You can have only a subset of rows returned by using the WHERE clause</p>
-					<pre><code contenteditable class="JavaScript">sqilte> SELECT *
+					<pre><code contenteditable class="JavaScript">sqlite> SELECT *
    ...> FROM Customer
    ...> WHERE FirstName = "Mark";
 14|Mark|Philips|Telus|8210 111 ST NW|Edmonton|AB|Canada|T6G 2C7|+1 (780) 434-4554|+1 (780) 434-5565|mphilips12@shaw.ca|5
@@ -426,6 +463,14 @@ sqlite>
 						<li>Use SQLite Manager to get ideas of how the data is structured, and what you might query</li>
 						<li>Feel free to work with a neighbor!</li>
 					</ul>
+				</section>
+
+				<section>
+						<h3>Resources</h3>
+								<ul>
+										<li><a href="http://www.sqlite.org/whentouse.html">When to Use SQLite</a> - A list of good uses for SQLite, as well as situations where another RDMBS would be better.</li>
+										<li>More about <a href="http://www.tutorialspoint.com/sqlite/sqlite_where_clause.htm">SQLite WHERE clauses</a></li>
+							</ul>
 				</section>
 
         <section>
