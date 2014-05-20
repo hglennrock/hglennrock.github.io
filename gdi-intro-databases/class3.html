@@ -62,13 +62,41 @@
 					<p>Today, we will learn to:</p>
 					<ul>
 						<li>Create a database</li>
-						<li>Create tables</li>
+						<li>Create, alter and drop tables</li>
 						<li>Insert, update and delete records</li>
 					</ul>
         </section>
 
 				<section>
 					<h3>Create Database</h3>
+					<p>From Windows Command Line Tool:</p>
+					<pre><code contenteditable class="JavaScript">sqlite> .open test.db
+</code></pre>
+					<p>From Mac Terminal:</p>
+					<pre><code contenteditable class="JavaScript">$ sqlite3 test.db
+</code></pre>
+					<p>In each case, SQLite3 attempts to open a database called "test.db", which does not exists. Therefore, it is created.</p>
+				</section>
+
+				<section>
+					<h3>Create Tables</h3>
+					<p>The CREATE statement is used to create tables. It is also used to create indexes, views and triggers.</p>
+					<p>To create a table, we give a name to a table and to its columns. Each column can have one of these data types:</p>
+					<ul>
+						<li>NULL - The value is a NULL value</li>
+						<li>INTEGER - a signed integer</li>
+						<li>REAL - a floating point value</li>
+						<li>TEXT - a text string</li>
+						<li>BLOB - a blob of data</li>
+					</ul>
+					<pre><code contenteditable class="JavaScript">sqlite> CREATE TABLE Testing(Id INTEGER);
+sqlite> .schema Testing
+CREATE TABLE Testing(Id INTEGER);
+</code></pre>
+				</section>
+
+				<section>
+					<h3></h3>
 				</section>
 
         <section>
