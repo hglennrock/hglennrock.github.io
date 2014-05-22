@@ -147,6 +147,157 @@ sqlite> .schema NamesOfFriends
 </code></pre>
 				</section>
 
+				<section>
+					<h3>Primary and Foreign Keys</h3>
+					<pre><code contenteditable class="JavaScript">sqlite> .schema InvoiceLine
+CREATE TABLE [InvoiceLine]
+(
+    [InvoiceLineId] INTEGER  NOT NULL,
+    [InvoiceId] INTEGER  NOT NULL,
+    [TrackId] INTEGER  NOT NULL,
+    [UnitPrice] NUMERIC(10,2)  NOT NULL,
+    [Quantity] INTEGER  NOT NULL,
+    CONSTRAINT [PK_InvoiceLine] PRIMARY KEY  ([InvoiceLineId]),
+    FOREIGN KEY ([InvoiceId]) REFERENCES [Invoice] ([InvoiceId])
+		ON DELETE NO ACTION ON UPDATE NO ACTION,
+    FOREIGN KEY ([TrackId]) REFERENCES [Track] ([TrackId])
+		ON DELETE NO ACTION ON UPDATE NO ACTION
+);
+</code></pre>
+<p>We will ignore indexes in this class and discuss them next week.</p>
+				</section>
+
+				<section>
+					<h3>Let's Develop It!</h3>
+					<p>Create your own version of the Chinook database. Use the diagram below as a guide.</p>
+					<img style="width:60%" src="images/chinookschema.png">
+				</section>
+
+				<section>
+					<h3>Let's Develop It!</h3>
+					<p>Hint: Order matters due to foreign key constraints.</p>
+					<ul>
+						<li>Artist</li>
+						<li>Album</li>
+						<li>Employee</li>
+						<li>Customer</li>
+						<li>Genre</li>
+						<li>Invoice</li>
+						<li>MediaType</li>
+						<li>Track</li>
+						<li>InvoiceLine</li>
+						<li>Playlist</li>
+						<li>PlaylistTrack</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Solution</h3>
+					<p>The solution can be found by executing the .schema command on each table for the Chinook database.</p>
+					<p>Alternatively, you can download this <a href="create_tables.sql">list of CREATE statements.</a></p>
+				</section>
+
+				<section>
+					<h3>Inserting Rows</h3>
+					<p>The INSERT statement is used to insert data into tables. Let's create a new table as an example.</p>
+					<pre><code contenteditable class="JavaScript">sqlite> CREATE TABLE Books(Id INTEGER PRIMARY KEY, Title TEXT, Author TEXT, ISBN TEXT DEFAULT 'not available');
+</code></pre>
+					<p>Now, we will use the INSERT statement to create a row with all the values we want to store.</p>
+					<pre><code contenteditable class="JavaScript">sqlite> INSERT INTO Books(Id, Title, Author, ISBN)
+   ...> VALUES(1, 'War and Peace', 'Leo Tolstoy', '978-0345472403');
+</code></pre>
+					<p>We omitted the Id column, as it was defined as an INTEGER PRIMARY KEY. In SQLite, this will autoincrement for us.</p>
+				</section>
+
+				<section>
+					<h3>Inserting Rows</h3>
+					<p>Let's add one more:</p>
+					<pre><code contenteditable class="JavaScript">sqlite> INSERT INTO Books(Title, Author, ISBN)
+   ...> VALUES('The Brothers Karamazov', 'Fyodor Dostoyevsky', '978-0486437910');
+</code></pre>
+				  <p>And we can use a SELECT statement to view what we inserted.</p>
+					<pre><code contenteditable class="JavaScript">sqlite> SELECT * FROM Books;
+Id|Title|Author|ISBN
+1|War and Peace|Leo Tolstoy|978-0345472403
+2|The Brothers Karamazov|Fyodor Dostoyevsky|978-0486437910
+</code></pre>
+				</section>
+
+				<section>
+					<h3>Inserting Rows</h3>
+					<p>We can insert a record without specifying column names.</p>
+					<pre><code contenteditable class="JavaScript">sqlite> INSERT INTO Books VALUES(3, 'Crime and Punishment', 'Fyodor Dostoevsky',
+   ...> '978-1840224306');
+</code></pre>
+					<p>In this case, we must supply all values.</p>
+				</section>
+
+				<section>
+					<h3>Null Values</h3>
+					<p>By default, SQLite will show empty strings for NULL values. We can change this behavior.</p>
+					<pre><code contenteditable class="JavaScript">sqlite> .nullvalue NULL
+</code></pre>
+				</section>
+
+				<section>
+					<h3>Omitting Columns</h3>
+					<p>We can also insert records that are missing values for some columns.</p>
+					<pre><code contenteditable class="JavaScript">sqlite> INSERT INTO Books(Id, Title) VALUES(4, 'Paradise Lost');
+</code></pre>
+					<p>Note the difference between the NULL value for the unspecified column and the default value of "not available" for the description.</p>
+					<pre><code contenteditable class="JavaScript">sqlite> SELECT * FROM Books WHERE Id=4;
+Id|Title|Author|ISBN
+4|Paradise Lost|NULL|not available
+</code></pre>
+				</section>
+
+				<section>
+					<h3>Updating Records</h3>
+					<p>Let's say we want to add the missing information for "Paradise Lost".</p>
+					<pre><code contenteditable class="JavaScript">sqlite> INSERT INTO Books VALUES(4, 'Paradise Lost', 'John Milton', '978-0486442877');
+Error: PRIMARY KEY must be unique
+sqlite> INSERT OR REPLACE INTO Books VALUES(4, 'Paradise Lost', 'John Milton',
+   ...> '978-0486442877');
+</code></pre>
+					<p>More commonly, you would use an UPDATE statement.</p>
+				</section>
+
+				<section>
+					<h3>Updating Records</h3>
+					<p>The UPDATE statement is used to change the value of columns in selected rows of a table.</p>
+					<p>Say we want to change "Leo Tolstoy" to "Lev Nikolayevich Tolstoy" in our Books table.</p>
+					<pre><code contenteditable class="JavaScript">sqlite> UPDATE Books SET Author='Lev Nikolayevich Tolstoy' WHERE Id=1;
+sqlite> SELECT * FROM Books WHERE Id=1;
+Id|Title|Author|ISBN
+1|War and Peace|Lev Nikolayevich Tolstoy|978-0345472403</code></pre>
+					<p>The row is correctly updated.</p>
+				</section>
+
+				<section>
+					<h3>Deleting Records</h3>
+					<p>The DELETE keyword is used to delete data from tables.<p>
+					<pre><code contenteditable class="JavaScript">sqlite> DELETE FROM Books WHERE Id=1;
+SELECT * FROM Books;
+Id|Title|Author|ISBN
+2|The Brothers Karamazov|Fyodor Dostoyevsky|978-0486437910
+3|Crime and Punishment|Fyodor Dostoevsky|978-1840224306
+4|Paradise Lost|NULL|not available</code></pre>
+					<p><em><strong>WARNING: Like the DROP statement, DELETE can be destructive. Mind your WHERE clause!</strong></em></p>
+				</section>
+
+				<section>
+					<h3>Deleting Records</h3>
+					<h4>Appetite for Destruction</h3>
+					<pre><code contenteditable class="JavaScript">sqlite> DELETE FROM Books;
+</code></pre>
+					<p>No WHERE clause means that this statement deletes all data in the table!</p>
+				</section>
+
+				<section>
+					<h3>Let's Develop It!</h3>
+					<p>Using the database you created in the first exercise, practice inserting, updating and deleting records.</p>
+				</section>
+
         <section>
           <h2>Questions?</h2>
           <div style = "font-size:1200%; height:100%; margin-top:40%" class ="blue">?
