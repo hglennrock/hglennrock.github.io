@@ -59,11 +59,12 @@
 
 		    <section>
 					<h3>Overview</h3>
-					<p>Today, we will learn to:</p>
+					<p>Today, we will learn:</p>
 					<ul>
-						<li>Create a database</li>
-						<li>Create, alter and drop tables</li>
-						<li>Insert, update and delete records</li>
+						<li>How to create a database</li>
+						<li>How to create, alter and drop tables</li>
+						<li>A little about column constraints</li>
+						<li>How to insert, update and delete records</li>
 					</ul>
         </section>
 
@@ -165,6 +166,89 @@ CREATE TABLE [InvoiceLine]
 );
 </code></pre>
 <p>We will ignore indexes in this class and discuss them next week.</p>
+				</section>
+
+				<section>
+					<h3>Constraints</h3>
+					<p>Constraints are placed on columns. They limit the data that can be inserted into tables.<p>
+					<ul>
+						<li>NOT NULL</li>
+						<li>UNIQUE</li>
+						<li>PRIMARY KEY</li>
+						<li>FOREIGN KEY</li>
+						<li>CHECK</li>
+						<li>DEFAULT</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>NOT NULL CONSTRAINT</h3>
+					<p>A column with a NOT NULL constraint can't have NULL values.</p>
+					<pre><code contenteditable class="JavaScript">sqlite> CREATE TABLE People(Id INTEGER, LastName TEXT NOT NULL,
+	...> FirstName TEXT NOT NULL, City TEXT);
+sqlite> INSERT INTO People VALUES(1, 'Hanks', 'Robert', 'New York');
+sqlite> INSERT INTO People VALUES(2, NULL, 'Marianne', 'Chicago');
+Error: People.LastName may not be NULL
+</code></pre>
+				</section>
+
+				<section>
+					<h3>UNIQUE Constraint</h3>
+					<p>The UNIQUE constraint ensures that all data in a column are unique.</p>
+					<pre><code contenteditable class="JavaScript">sqlite> CREATE TABLE Brands(Id INTEGER, BrandName TEXT UNIQUE);
+sqlite> INSERT INTO Brands VALUES(1, 'Coca Cola');
+sqlite> INSERT INTO Brands VALUES(2, 'Pepsi');
+sqlite> INSERT INTO Brands VALUES(3, 'Pepsi');
+Error: column BrandName is not unique
+</code></pre>
+				<p>Note: the PRIMARY KEY constraint automatically has a UNIQUE constraint defined on it.</p>
+				</section>
+
+				<section>
+					<h3>Primary Key Constraint</h3>
+					<ul>
+						<li>Uniquely identifies each row in a database table.</li>
+						<li>There can be additional UNIQUE columns, but only one PRIMARY KEY.</li>
+						<li>We use prmary keys as unique IDs to refer to table rows.</li>
+						<li>Primary keys <em>become</em> foreign keys when creating relations among tables.</li>
+					</ul>
+					<p><em>Note: Due to an oversight in SQLite, primary keys can be NULL in SQLite. This is not true for other relational databases.</em></p>
+				</section>
+
+				<section>
+					<h3>Foreign Key Constraint</h3>
+					<p>A FOREIGN KEY in one table points to a PRIMARY KEY in another table. This acts as a referential constraint between the two tables.</p>
+					<pre><code contenteditable class="JavaScript">sqlite> CREATE TABLE Authors(AuthorId INTEGER PRIMARY KEY, Name TEXT);
+CREATE TABLE Books(BookId INTEGER PRIMARY KEY, Title TEXT, AuthorId INTEGER,
+		FOREIGN KEY(AuthorId) REFERENCES Authors(AuthorId));
+</code></pre>
+					<p>In SQLite, foreign keys are not enforced by default. Configuration is outside the scope of this class, but other databases will enforce by default.</p>
+				</section>
+
+				<section>
+					<h3>CHECK Constraint</h3>
+					<p>A CHECK clause imposes a validation on the value that is being added or updated to a column.</p>
+					<pre><code contenteditable class="JavaScript">sqlite> CREATE TABLE Orders(Id INTEGER PRIMARY KEY, OrderPrice INTEGER CHECK(OrderPrice>0),
+Customer TEXT);
+sqlite> INSERT INTO Orders(OrderPrice, Customer) VALUES(-10, 'Johnson');
+Error: constraint failed</code></pre>
+					<p>If we try to insert an order wtih a negative price, we get an error.</p>
+				</section>
+
+				<section>
+					<h3>DEFAULT Constraint</h3>
+					<p>The DEFAULT constraint inserts a default value in a column if no value is provided.</p>
+					<pre><code contenteditable class="JavaScript">sqlite> CREATE TABLE Hotels(Id INTEGER PRIMARY KEY, Name TEXT,
+	...> City TEXT DEFAULT 'not available');
+sqlite> INSERT INTO Hotels(Name, City) VALUES('Kyjev', 'Bratislava');
+sqlite> INSERT INTO Hotels(Name) VALUES('Slovan');
+sqlite> .width 3 8 17
+sqlite> SELECT * FROM Hotels;
+Id   Name      City
+---  --------  -----------------
+1    Kyjev     Bratislava
+2    Slovan    not available </code></pre>
+					<p>In the first statement, we provided values for both name and city. In the second statement, we only provided the hotel name.</p>
 				</section>
 
 				<section>
