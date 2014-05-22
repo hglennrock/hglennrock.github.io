@@ -104,6 +104,49 @@ sqlite> .tables
 					<a href="http://xkcd.com/327/"><img src="images/exploits_of_a_mom.png"/></a>
 				</section>
 
+				<section>
+					<h3>Drop Tables</h3>
+					<p>If you are trying to drop a table that does not exist, you will get an error. We can avoid this with the "IF EXISTS" clause.</p>
+					<pre><code contenteditable class="JavaScript">sqlite> DROP TABLE IF EXISTS Testing;
+sqlite> .tables
+</code></pre>
+				</section>
+
+				<section>
+					<h3>Alter Tables</h3>
+					<ul>
+						<li>Rename a table</li>
+						<li>Add a column to a table</li>
+						<li>In SQLite, ALTER cannot:
+							<ul>
+								<li>Rename a column</li>
+								<li>Remove a column</li>
+								<li>Add or remove constraints from a table</li>
+							</ul></li>
+					</ul>
+					<pre><code contenteditable class="JavaScript">sqlite> CREATE TABLE Names(Id INTEGER, Name TEXT);
+sqlite> .tables
+sqlite> ALTER TABLE Names RENAME TO NamesOfFriends;
+sqlite> .schema NamesOfFriends
+sqlite> ALTER TABLE NamesOfFriends ADD COLUMN Email TEXT;
+sqlite> .schema NamesOfFriends
+</code></pre>
+				</section>
+
+				<section>
+					<h3>What if Alter isn't good enough?</h3>
+					<p>Say we really do need to rename or remove a column. What do we do?</p>
+					<ul>
+						<li>Rename the old table</li>
+						<li>Create the new table, based on the old table but with the updated column</li>
+						<li>Copy the contents across from the original table</li>
+						<li>Drop the old table</li>
+					</ul>
+					<p>The .dump Table command in SQLite will output the instructions for recreating a table and its contents.</p>
+					<pre><code contenteditable class="JavaScript">sqlite> .dump Media
+</code></pre>
+				</section>
+
         <section>
           <h2>Questions?</h2>
           <div style = "font-size:1200%; height:100%; margin-top:40%" class ="blue">?
