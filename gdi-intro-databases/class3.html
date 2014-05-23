@@ -92,7 +92,7 @@
 					</ul>
 					<pre><code contenteditable class="JavaScript">sqlite> CREATE TABLE Testing(Id INTEGER);
 sqlite> .schema Testing
-CREATE TABLE Testing(Id INTEGER);
+sqlite> CREATE TABLE Testing(Id INTEGER);
 </code></pre>
 				</section>
 
@@ -219,8 +219,8 @@ Error: column BrandName is not unique
 					<h3>Foreign Key Constraint</h3>
 					<p>A FOREIGN KEY in one table points to a PRIMARY KEY in another table. This acts as a referential constraint between the two tables.</p>
 					<pre><code contenteditable class="JavaScript">sqlite> CREATE TABLE Authors(AuthorId INTEGER PRIMARY KEY, Name TEXT);
-CREATE TABLE Books(BookId INTEGER PRIMARY KEY, Title TEXT, AuthorId INTEGER,
-		FOREIGN KEY(AuthorId) REFERENCES Authors(AuthorId));
+sqlite> CREATE TABLE Books(BookId INTEGER PRIMARY KEY, Title TEXT, AuthorId INTEGER,
+	 ...> FOREIGN KEY(AuthorId) REFERENCES Authors(AuthorId));
 </code></pre>
 					<p>In SQLite, foreign keys are not enforced by default. Configuration is outside the scope of this class, but other databases will enforce by default.</p>
 				</section>
@@ -228,8 +228,7 @@ CREATE TABLE Books(BookId INTEGER PRIMARY KEY, Title TEXT, AuthorId INTEGER,
 				<section>
 					<h3>CHECK Constraint</h3>
 					<p>A CHECK clause imposes a validation on the value that is being added or updated to a column.</p>
-					<pre><code contenteditable class="JavaScript">sqlite> CREATE TABLE Orders(Id INTEGER PRIMARY KEY, OrderPrice INTEGER CHECK(OrderPrice>0),
-Customer TEXT);
+					<pre><code contenteditable class="JavaScript">sqlite> CREATE TABLE Orders(Id INTEGER PRIMARY KEY, OrderPrice INTEGER CHECK(OrderPrice>0), Customer TEXT);
 sqlite> INSERT INTO Orders(OrderPrice, Customer) VALUES(-10, 'Johnson');
 Error: constraint failed</code></pre>
 					<p>If we try to insert an order wtih a negative price, we get an error.</p>
