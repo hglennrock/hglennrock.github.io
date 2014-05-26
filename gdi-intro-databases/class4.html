@@ -61,7 +61,7 @@
 					<h3>Overview</h3>
 					<p>Today, we will learn:</p>
 					<ul>
-						<li>Just a little relational algebra</li>
+						<li>Brief Relational Algebra Overview</li>
 						<li>SQL Joins</li>
 						<li>Indexes</li>
 						<li>Functions</li>
@@ -74,8 +74,8 @@
 				<section>
 					<h3>Relational Algebra</h3>
 					<p>Relational algebra is a procedural query language, which takes instances of
-						relations as input and yields instances of relations as output.</p>
-					<p>Operators are used to perform queries.</p>
+						relations as input, uses operators to perform queries, and yields instances of relations as output.</p>
+					<br><br><p><em>It's just a mathematical way of describing the process of querying from tables.</em></p>
 				</section>
 
 				<section>
@@ -83,10 +83,288 @@
 					<ul>
 						<li>Select</li>
 						<li>Project</li>
-						<li>Union</li>
+						<li>Union/Intersection</li>
 						<li>Set Difference</li>
-						<li>Cartesian Product</li>
 					</ul>
+				</section>
+
+				<section>
+					<h3>Select</h3>
+					<p>Selects rows (often called tuples) that satisfy a predicate (WHERE clause) from a relation (table).</p>
+					<br>
+					<p>σ<sub>ᵩ</sub>(R)</p>
+					<br>
+					<ul>
+						<li>σ = selection</li>
+						<li>R = relation (table)</li>
+						<li>ᵠ = Where condition</li>
+					</ul><br><br>
+					<pre><code contenteditable class="JavaScript">SELECT * FROM Album WHERE ArtistId = 42;
+</code></pre>
+				</section>
+
+				<section>
+					<h3>Project</h3>
+					<p>Projects one or more columns that satisfy a predicate (WHERE clause).</p>
+					<br>
+					<p>π<sub style="font-size:12px;">col1, col2</sub>(σ<sub>ᵩ</sub>(R))</p>
+					<br>
+					<ul>
+						<li>π = projection (subset of columns)</li>
+						<li>col1, col2 = subset of columns in the selection
+						<li>σ = selection</li>
+						<li>R = relation (table)</li>
+						<li>ᵠ = Where condition</li>
+					</ul><br><br>
+					<pre><code contenteditable class="JavaScript">SELECT Title FROM Album WHERE ArtistId = 42;
+</code></pre>
+				</section>
+
+				<section>
+					<h3>Union</h3>
+					<p>Performs a union between two relations</p>
+					<br>
+					<p>R ∪ S</p>
+					<br>
+					<ul>
+						<li>R = {2, 3, 4}</li>
+						<li>S = {5, 6, 7}</li>
+						<li>R ∪ S = {2, 3, 4, 5, 6, 7}
+					</ul>
+				</section>
+
+				<section>
+					<h3>Intersection</h3>
+					<p>Performs an intersection between two relations</p>
+					<br>
+					<p>R ∩ S</p>
+					<br>
+					<ul>
+						<li>R = {2, 3, 4}</li>
+						<li>S = {3, 4, 5}</li>
+						<li>R ∩ S = {3, 4}
+					</ul>
+				</section>
+
+				<section>
+					<h3>Set Difference</h3>
+					<p>The result of set difference is the rows that are present in one relation, but not in the second.</p>
+					<br>
+					<p>R − S</p>
+					<br>
+					<ul>
+						<li>R = {2, 3, 4}</li>
+						<li>S = {3, 4, 5}</li>
+						<li>R − S = {2}
+					</ul>
+				</section>
+
+				<section>
+					<h3>Joining Tables</h3>
+					<p>Finally, the real power of SQL!</p>
+					<p>The SQL JOIN clause combines records from two or more tables in a database.
+					You will primarly use two types of joins, with some variations on these.</p>
+					<ul>
+						<li>Inner Join</li>
+						<li>Outer Join</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Our Tables</h3>
+					<p>To illustrate these joins, let's say we have Table A and Table B.
+						We want to join these tables in a variety of ways.</p>
+					<pre><code contenteditable class="JavaScript">Table A                    Table B
+=================          =================
+id    name                 id     name
+=================          =================
+1     Pirate               1      Rutabaga
+2     Monkey               2      Pirate
+3     Ninja                3      Darth Vader
+4     Spaghetti            4      Ninja
+</code></pre>
+				</section>
+
+				<section>
+					<h3>INNER JOIN</h3>
+					<ul>
+						<li>The Inner Join is the most common type of join.</li>
+						<li>It's so common that it's the default join type for SQLite.</li>
+						<li>Selects only records that match both of the tables you are joining.</li>
+					</ul>
+					<pre><code contenteditable class="JavaScript">Table A                    Table B
+=================          =================
+id    name                 id     name
+=================          =================
+1     Pirate               1      Rutabaga
+2     Monkey               2      Pirate
+3     Ninja                3      Darth Vader
+4     Spaghetti            4      Ninja
+</code></pre>
+				</section>
+
+				<section>
+					<h3>Inner Join</h3>
+					<p>Selects only the records that match both Table A and Table B</p>
+					<img style="height:250px" src="images/innerjoin.png"/>
+					<pre><code contenteditable class="JavaScript">SELECT * from TableA
+INNER JOIN Table B
+ON TableA.name = TableB.name;
+
+=================          =================
+id    name                 id     name
+=================          =================
+1     Pirate               2      Pirate
+3     Ninja                4      Ninja
+</code></pre>
+				</section>
+
+				<section>
+					<h3>FULL OUTER JOIN</h3>
+					<ul>
+						<li>The Full Outer Join produces all sets of records in Table A and Table B.</li>
+						<li>Records from both sides are included, where available.</li>
+						<li>If there is no matching record, the missing side will have a null value.</li>
+					</ul>
+					<pre><code contenteditable class="JavaScript">Table A                    Table B
+=================          =================
+id    name                 id     name
+=================          =================
+1     Pirate               1      Rutabaga
+2     Monkey               2      Pirate
+3     Ninja                3      Darth Vader
+4     Spaghetti            4      Ninja
+</code></pre>
+				</section>
+
+				<section>
+					<h3>FULL OUTER JOIN</h3>
+					<p>Selects all sets of records from Table A and Table B.</p>
+					<img style="height:250px" src="images/fullouterjoin.png"/>
+					<pre><code contenteditable class="JavaScript">SELECT * from TableA
+FULL OUTER JOIN Table B
+ON TableA.name = TableB.name;
+
+=================          =================
+id    name                 id     name
+=================          =================
+1     Pirate               2      Pirate
+2     Monkey	             null   null
+3     Ninja                4      Ninja
+4     Spaghetti            null   null
+null  null                 1      Rutabaga
+null  null                 3      Darth Vader
+</code></pre>
+				</section>
+
+				<section>
+					<h3>LEFT OUTER JOIN</h3>
+					<ul>
+						<li>The Left Outer Join produces all records from Table A, with matching records
+							from Table B if they are available.</li>
+						<li>If there is no matching record in Table B, the right side will have a null value.</li>
+					</ul>
+					<pre><code contenteditable class="JavaScript">Table A                    Table B
+=================          =================
+id    name                 id     name
+=================          =================
+1     Pirate               1      Rutabaga
+2     Monkey               2      Pirate
+3     Ninja                3      Darth Vader
+4     Spaghetti            4      Ninja
+</code></pre>
+				</section>
+
+				<section>
+					<h3>LEFT OUTER JOIN</h3>
+					<p>Selects all sets of records from Table A and Table B.</p>
+					<img style="height:250px" src="images/leftouterjoin.png"/>
+					<pre><code contenteditable class="JavaScript">SELECT * from TableA
+LEFT OUTER JOIN Table B
+ON TableA.name = TableB.name;
+
+=================          =================
+id    name                 id     name
+=================          =================
+1     Pirate               2      Pirate
+2     Monkey	             null   null
+3     Ninja                4      Ninja
+4     Spaghetti            null   null
+</code></pre>
+				</section>
+
+				<section>
+					<h3>Records in Table A, but not Table B</h3>
+					<ul>
+						<li>Let's say we want to know all of the records in Table A that don't also appear in Table B.</li>
+						<li>We can do this by adding a WHERE clause to our left outer join.</li>
+					</ul>
+					<pre><code contenteditable class="JavaScript">Table A                    Table B
+=================          =================
+id    name                 id     name
+=================          =================
+1     Pirate               1      Rutabaga
+2     Monkey               2      Pirate
+3     Ninja                3      Darth Vader
+4     Spaghetti            4      Ninja
+</code></pre>
+				</section>
+
+				<section>
+					<h3>Records in Table A, but not Table B</h3>
+					<p>Remembere that the left outer join gave us null values for the right
+						side if there was no corresponding record in Table B. We can now use
+					this information to isolate the records we want.</p>
+					<img style="height:250px" src="images/in_a_but_not_b.png"/>
+					<pre><code contenteditable class="JavaScript">SELECT * from TableA
+LEFT OUTER JOIN Table B
+ON TableA.name = TableB.name
+WHERE TableB.id IS null;
+
+=================          =================
+id    name                 id     name
+=================          =================
+2     Monkey	          null   null
+4     Spaghetti            null   null
+</code></pre>
+				</section>
+
+				<section>
+					<h3>Records in Table A OR Table B, but not in both</h3>
+					<ul>
+						<li>Let's say we want to know all of the records in Table A or Table B,
+							but want to exclude records that appear in both.</li>
+						<li>We can do this by adding a WHERE clause to a full outer join.</li>
+					</ul>
+					<pre><code contenteditable class="JavaScript">Table A                    Table B
+=================          =================
+id    name                 id     name
+=================          =================
+1     Pirate               1      Rutabaga
+2     Monkey               2      Pirate
+3     Ninja                3      Darth Vader
+4     Spaghetti            4      Ninja
+</code></pre>
+				</section>
+
+				<section>
+					<h3>Records in Table A OR Table B, but not in both</h3>
+					<p>This will give us records unique to Table A OR Table B.</p>
+					<img style="height:250px" src="images/unique_to_a_and_b.png"/>
+					<pre><code contenteditable class="JavaScript">SELECT * from TableA
+LEFT OUTER JOIN Table B
+ON TableA.name = TableB.name
+WHERE TableA.id IS null
+OR TableB.id IS null;
+
+=================          =================
+id    name                 id     name
+=================          =================
+2     Monkey	          null   null
+4     Spaghetti            null   null
+null  null                 1      Rutabaga
+null  null                 3      Darth Vader
+</code></pre>
 				</section>
 
         <section>
