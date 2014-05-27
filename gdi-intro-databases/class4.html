@@ -59,15 +59,17 @@
 
 		    <section>
 					<h3>Overview</h3>
-					<p>Today, we will learn:</p>
 					<ul>
 						<li>Brief Relational Algebra Overview</li>
 						<li>SQL Joins</li>
-						<li>Indexes</li>
-						<li>Functions</li>
-						<li>Views</li>
-						<li>Triggers</li>
-						<li>Transactions</li>
+						<li>Bonus Material (time permitting):
+							<ul>
+								<li>Functions</li>
+								<li>Indexes</li>
+								<li>Views</li>
+								<li>Triggers</li>
+								<li>Transactions</li>
+							</ul></li>
 					</ul>
         </section>
 
@@ -220,11 +222,60 @@ id    name                 id     name
 				</section>
 
 				<section>
+					<h3>Let's Develop It!</h3>
+					<p>Write a SQL Query that returns the following from the Chinook Database.</p>
+					<ul>
+						<li>Album Id</li>
+						<li>Album Title</li>
+						<li>Artist Name</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Solution</h3>
+					<pre><code contenteditable class="JavaScript">SELECT Album.AlbumId, Album.Title as AlbumTitle,
+    Artist.Name as ArtistName
+FROM Album
+JOIN Artist
+    ON Album.ArtistId = Artist.ArtistId;
+</code></pre>
+				</section>
+
+				<section>
+					<h3>Let's Develop It!</h3>
+					<p>Write a SQL Query that returns the following from the Chinook Database.</p>
+					<ul>
+						<li>Artist Name</li>
+						<li>Album Title</li>
+						<li>Track Name</li>
+						<li>Genre Name</li>
+						<li>Composer</li>
+						<li>Unit Price</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Solution</h3>
+					<pre><code contenteditable class="JavaScript">SELECT Artist.Name, Album.Title as AlbumTitle,
+    Track.Name as TrackName, Genre.Name,
+    Track.Composer, Track.UnitPrice
+FROM Album
+JOIN Artist
+    ON Album.ArtistId = Artist.ArtistId
+JOIN Track
+    ON Track.AlbumId = Album.AlbumId
+JOIN Genre
+    ON Genre.GenreId = Track.GenreId;
+</code></pre>
+				</section>
+
+				<section>
 					<h3>FULL OUTER JOIN</h3>
 					<ul>
 						<li>The Full Outer Join produces all sets of records in Table A and Table B.</li>
 						<li>Records from both sides are included, where available.</li>
 						<li>If there is no matching record, the missing side will have a null value.</li>
+						<li><em>Note: Full Outer Joins are not supported by SQLite</em></li>
 					</ul>
 					<pre><code contenteditable class="JavaScript">Table A                    Table B
 =================          =================
@@ -352,7 +403,7 @@ id    name                 id     name
 					<p>This will give us records unique to Table A OR Table B.</p>
 					<img style="height:250px" src="images/unique_to_a_and_b.png"/>
 					<pre><code contenteditable class="JavaScript">SELECT * from TableA
-LEFT OUTER JOIN Table B
+FULL OUTER JOIN Table B
 ON TableA.name = TableB.name
 WHERE TableA.id IS null
 OR TableB.id IS null;
@@ -366,6 +417,268 @@ null  null                 1      Rutabaga
 null  null                 3      Darth Vader
 </code></pre>
 				</section>
+
+				<section>
+					<h3>Let's Develop It!</h3>
+					<p>Write a SQL query that returns album and track information for
+						tracks where the composer information is missing.</p>
+				</section>
+
+				<section>
+					<h3>Solution</h3>
+					<pre><code contenteditable class="JavaScript">SELECT * from Album
+JOIN Track
+    ON Track.AlbumId = Album.AlbumId
+WHERE Track.Composer IS null;
+</code></pre>
+				</section>
+
+				<section>
+					<h3>Ordering Data</h3>
+					<p>Data from a SELECT statement can be ordered with the ORDER BY clause.</p>
+					<pre><code contenteditable class="JavaScript">SELECT * from Invoice
+ORDER BY InvoiceDate DESC;
+</code></pre>
+					<p>The results will be ordered from newest to oldest. Following the
+						keyword with ASC gives us the reverse order.</p>
+				</section>
+
+				<section>
+					<h3>Group By</h3>
+					<p>Data can also be grouped by identical values using the GROUP BY clause.</p>
+					<pre><code contenteditable class="JavaScript">SELECT * from Invoice
+GROUP BY CustomerId;
+</code></pre>
+					<p>This query will return all invoices grouped by customer.</p>
+				</section>
+
+				<section>
+					<h3>Functions</h3>
+					<p>SQLite has three types of functions:</p>
+					<ul>
+						<li>Core functions</li>
+						<li>Aggregate functions</li>
+						<li>Date &amp; Time functions</li>
+					</ul><br><br>
+					<p>Functions give you built-in functionality that allow you to do more with your data.</p>
+				</section>
+
+				<section>
+					<h3>Core Functions</h3>
+					<table>
+						<tr>
+							<td style="width:30%">sqlite_version()</td>
+							<td>Returns the version of the SQLite library</td>
+						</tr>
+						<tr>
+							<td>random()</td>
+							<td>Returns a pseudo-random integer</td>
+						</tr>
+						<tr>
+							<td>abs()</td>
+							<td>Returns the absolute value of a numerical argument</td>
+						</tr>
+						<tr>
+							<td>max()</td>
+							<td>Returns the maximum value</td>
+						</tr>
+						<tr>
+							<td>min()</td>
+							<td>Returns the minimum value</td>
+						</tr>
+						<tr>
+							<td>upper()</td>
+							<td>Converts characters into upper case</td>
+						</tr>
+						<tr>
+							<td>lower()</td>
+							<td>Converts characters into lower case</td>
+						</tr>
+						<tr>
+							<td>length()</td>
+							<td>Returns the length of a string of text</td>
+						</tr>
+						<tr>
+							<td>total_changes()</td>
+							<td>Returns the number of row changes since the current database connection was opened.</td>
+						</tr>
+					</table>
+				</section>
+
+				<section>
+					<h3>Aggregate Functions</h3>
+					<table>
+						<tr>
+							<td style="width:40%">count(*)</td>
+							<td>Returns the number of rows matching the query</td>
+						</tr>
+						<tr>
+							<td>count(id)</td>
+							<td>Returns the number of rows matching the query where the given column is not null</td>
+						</tr>
+						<tr>
+							<td>count(DISTINCT col)</td>
+							<td>Using DISTINCT with count returns the unique count</td>
+						</tr>
+						<tr>
+							<td>avg()</td>
+							<td>Returns the average value of all non-null values</td>
+						</tr>
+						<tr>
+							<td>sum()</td>
+							<td>Returns the sum of all non-null values</td>
+						</tr>
+					</table>
+				</section>
+
+				<section>
+					<h3>Date &amp; Time Functions</h3>
+					<table>
+						<tr>
+							<td>date('now')</td>
+							<td>Returns the current date (Example: 2014-01-01)</td>
+						</tr>
+						<tr>
+							<td>datetime('now')</td>
+							<td>Returns the current date and time (Example: 2014-01-01 13:12:01)</td>
+						</tr>
+						<tr>
+							<td>time('now')</td>
+							<td>Return the current time (Example: 13:12:01)</td>
+						</tr>
+					</table>
+				</section>
+
+				<section>
+					<h3>Date &amp; Time Modifiers</h3>
+					<p>You can pass one or more modifiers to the date(), time() and datetime() functions.</p>
+					<pre><code contenteditable class="JavaScript">sqlite> SELECT date('now', '2 months');
+2014-07-29
+</code></pre>
+					<p>Months and days can be passed as a modifier to add to the current date.</p>
+					<pre><code contenteditable class="JavaScript">sqlite> SELECT date('now', '-55 days');
+2014-04-04
+</code></pre>
+					<p>Likewise, you can subtract months and days.</p>
+				</section>
+
+				<section>
+					<h3>Date &amp; Time Modifiers</h3>
+					<p>Other modifiers include:</p>
+					<table>
+						<tr>
+							<td style="width:30%">'start of year'</td>
+							<td>Returns the start of the year</td>
+						</tr>
+						<tr>
+							<td>'start of day'</td>
+							<td>Returns the start of the day (00:00:00)</td>
+						</tr>
+						<tr>
+							<td>'weekday 0'</td>
+							<td>Advances to to the next date where the day of the week matches the number passed,
+								where 0 is Sunday, 1 is Monday, ..., Saturday is 6.</td>
+						</tr>
+					</table>
+				</section>
+
+				<section>
+					<h3>Date &amp; Time Modifiers</h3>
+					<p>What is the first Monday of next year?</p>
+					<pre><code contenteditable class="JavaScript">sqlite> SELECT datetime('now', '12 months', 'start of year',
+   ...> 'weekday 1');
+2015-01-05 00:00:00
+</code></pre>
+				</section>
+
+				<section>
+					<h3>Let's Develop It!</h3>
+					<p>Write SQL queries to answer the following questions about the Chinook data.</p>
+					<ul>
+						<li>If you bought one copy of every track, how much would you spend?</li>
+						<li>What is the average track price in our store?</li>
+						<li>How many genres of music are represented by tracks sold in our store?</li>
+						<li>How many artists have albums in our store?</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Solutions</h3>
+					<ul>
+						<li>If you bought one copy of every track, how much would you spend?<br>
+						<pre><code contenteditable class="JavaScript">sqlite> SELECT sum(UnitPrice) from Track;
+3680.969999999704
+	</code></pre>
+					</li>
+						<li>What is the average track price in our store?<br>
+						<pre><code contenteditable class="JavaScript">sqlite> SELECT avg(UnitPrice) as 'Average Price' FROM Track;
+1.0508050242648312
+	</code></pre></li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Solutions</h3>
+					<ul>
+						<li>How many genres of music are represented by tracks sold in our store?<br>
+						<pre><code contenteditable class="JavaScript">sqlite> SELECT count(DISTINCT GenreId) from Track;
+25
+	</code></pre></li>
+						<li>How many artists have albums in our store?<br>
+						<pre><code contenteditable class="JavaScript">sqlite> SELECT count(DISTINCT ArtistId) from Album;
+204
+	</code></pre></li>
+					</ul>
+					</section>
+
+					<section>
+						<h3>Advanced Topics</h3>
+						<h4>Indexes</h4>
+						<p>Indexes are a special lookup table that an RDBMS uses to speed up data retrieval.</p>
+						<p>We can think of an index in a database as being similar to an index in the back of a book.</p>
+						<pre><code contenteditable class="JavaScript">sqlite> CREATE INDEX salary_index ON COMPANY (salary);
+	</code></pre>
+						<p>You can list all of the indexes on a table by using the <em>.indices TABLE</em> command.
+						<pre><code contenteditable class="JavaScript">sqlite> .indices Employee
+IFK_EmployeeReportsTo
+IPK_Employee
+	</code></pre>
+					</section>
+
+					<section>
+						<h3>Advanced Topics</h3>
+						<h4>Views</h4>
+						<p>Views are a specific look at data from one or more tables.</p>
+						<p>You can think of a view as the results of a query that can be accessed as a virtual table</p>
+						<p>A view is not a part of the physical schema of a database, and
+							its values are computed dynamically from the data in the database.</p>
+						<pre><code contenteditable class="JavaScript">sqlite> CREATE VIEW cheap_tracks AS SELECT * FROM Tracks WHERE UnitPrice <= 0.99;
+	</code></pre>
+					</section>
+
+					<section>
+						<h3>Advanced Topics</h3>
+						<h4>Triggers</h4>
+						<p>Triggers are database operations that are automatically performed when a specific
+						event occurs in your database.</p>
+						<p>Among other things, triggers often used to insert records into log tables when changes are made to data.</p>
+						<p>Creating triggers is beyond the scope of this class, but know they exist.</p>
+					</section>
+
+					<section>
+						<h3>Advanced Topics</h3>
+						<h4>Transactions</h4>
+						<p>A transaction is an atomic unit of database operations.</p>
+						<p>The effect of a transaction is that either all of the SQL statements
+							in a transaction are committed to the database, or all of them are rolled back (no changes).</p>
+						<p>A transaction begins with the BEGIN TRANSACTION statement, followed by COMMIT or ROLLBACK.</p>
+						<p>Transactions are beyond the scope of this class, but good to learn if you are dealing with
+							a group of changes that are "all or nothing".</p>
+					</section>
+
+					<section>
+						<h3>Resources</h3>
+					</section>
 
         <section>
           <h2>Questions?</h2>
