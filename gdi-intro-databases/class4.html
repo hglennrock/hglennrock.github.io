@@ -73,96 +73,6 @@
 					</ul>
         </section>
 
-<!--
-				<section>
-					<h3>Relational Algebra</h3>
-					<p>Relational algebra is a procedural query language, which takes instances of
-						relations as input, uses operators to perform queries, and yields instances of relations as output.</p>
-					<br><br><p><em>It's just a mathematical way of describing the process of querying from tables.</em></p>
-				</section>
-
-				<section>
-					<h3>Fundamental operations of relational algebra</h3>
-					<ul>
-						<li>Select</li>
-						<li>Project</li>
-						<li>Union/Intersection</li>
-						<li>Set Difference</li>
-					</ul>
-				</section>
-
-				<section>
-					<h3>Select</h3>
-					<p>Selects rows (often called tuples) that satisfy a predicate (WHERE clause) from a relation (table).</p>
-					<br>
-					<p>σ<sub>ᵩ</sub>(R)</p>
-					<br>
-					<ul>
-						<li>σ = selection</li>
-						<li>R = relation (table)</li>
-						<li>ᵠ = Where condition</li>
-					</ul><br><br>
-					<pre><code contenteditable class="JavaScript">SELECT * FROM Album WHERE ArtistId = 42;
-</code></pre>
-				</section>
-
-				<section>
-					<h3>Project</h3>
-					<p>Projects one or more columns that satisfy a predicate (WHERE clause).</p>
-					<br>
-					<p>π<sub style="font-size:12px;">col1, col2</sub>(σ<sub>ᵩ</sub>(R))</p>
-					<br>
-					<ul>
-						<li>π = projection (subset of columns)</li>
-						<li>col1, col2 = subset of columns in the selection
-						<li>σ = selection</li>
-						<li>R = relation (table)</li>
-						<li>ᵠ = Where condition</li>
-					</ul><br><br>
-					<pre><code contenteditable class="JavaScript">SELECT Title FROM Album WHERE ArtistId = 42;
-</code></pre>
-				</section>
-
-				<section>
-					<h3>Union</h3>
-					<p>Performs a union between two relations</p>
-					<br>
-					<p>R ∪ S</p>
-					<br>
-					<ul>
-						<li>R = {2, 3, 4}</li>
-						<li>S = {5, 6, 7}</li>
-						<li>R ∪ S = {2, 3, 4, 5, 6, 7}
-					</ul>
-				</section>
-
-				<section>
-					<h3>Intersection</h3>
-					<p>Performs an intersection between two relations</p>
-					<br>
-					<p>R ∩ S</p>
-					<br>
-					<ul>
-						<li>R = {2, 3, 4}</li>
-						<li>S = {3, 4, 5}</li>
-						<li>R ∩ S = {3, 4}
-					</ul>
-				</section>
-
-				<section>
-					<h3>Set Difference</h3>
-					<p>The result of set difference is the rows that are present in one relation, but not in the second.</p>
-					<br>
-					<p>R − S</p>
-					<br>
-					<ul>
-						<li>R = {2, 3, 4}</li>
-						<li>S = {3, 4, 5}</li>
-						<li>R − S = {2}
-					</ul>
-				</section>
--->
-
 				<section>
 					<h3>Joining Tables</h3>
 					<p>Finally, the real power of SQL!</p>
@@ -176,9 +86,9 @@
 
 				<section>
 					<h3>Our Tables</h3>
-					<p>To illustrate these joins, let's say we have Table A and Table B.
+					<p>To illustrate these joins, let's say we have TableA and TableB.
 						We want to join these tables in a variety of ways.</p>
-					<pre><code contenteditable class="JavaScript">Table A                    Table B
+					<pre><code contenteditable class="JavaScript">TableA                    TableB
 =================          =================
 id    name                 id     name
 =================          =================
@@ -196,7 +106,7 @@ id    name                 id     name
 						<li>It's so common that it's the default join type for SQLite.</li>
 						<li>Selects only records that match both of the tables you are joining.</li>
 					</ul>
-					<pre><code contenteditable class="JavaScript">Table A                    Table B
+					<pre><code contenteditable class="JavaScript">TableA                    TableB
 =================          =================
 id    name                 id     name
 =================          =================
@@ -209,10 +119,10 @@ id    name                 id     name
 
 				<section>
 					<h3>Inner Join</h3>
-					<p>Selects only the records that match both Table A and Table B</p>
+					<p>Selects only the records that match both TableA and TableB</p>
 					<img style="height:250px" src="images/innerjoin.png"/>
 					<pre><code contenteditable class="JavaScript">SELECT * from TableA
-INNER JOIN Table B
+INNER JOIN TableB
 ON TableA.name = TableB.name;
 
 =================          =================
@@ -274,12 +184,12 @@ JOIN Genre
 				<section>
 					<h3>FULL OUTER JOIN</h3>
 					<ul>
-						<li>The Full Outer Join produces all sets of records in Table A and Table B.</li>
+						<li>The Full Outer Join produces all sets of records in TableA and TableB.</li>
 						<li>Records from both sides are included, where available.</li>
 						<li>If there is no matching record, the missing side will have a null value.</li>
 						<li><em>Note: Full Outer Joins are not supported by SQLite</em></li>
 					</ul>
-					<pre><code contenteditable class="JavaScript">Table A                    Table B
+					<pre><code contenteditable class="JavaScript">TableA                    TableB
 =================          =================
 id    name                 id     name
 =================          =================
@@ -292,10 +202,10 @@ id    name                 id     name
 
 				<section>
 					<h3>FULL OUTER JOIN</h3>
-					<p>Selects all sets of records from Table A and Table B.</p>
+					<p>Selects all sets of records from TableA and TableB.</p>
 					<img style="height:250px" src="images/fullouterjoin.png"/>
 					<pre><code contenteditable class="JavaScript">SELECT * from TableA
-FULL OUTER JOIN Table B
+FULL OUTER JOIN TableB
 ON TableA.name = TableB.name;
 
 =================          =================
@@ -313,11 +223,11 @@ null  null                 3      Darth Vader
 				<section>
 					<h3>LEFT OUTER JOIN</h3>
 					<ul>
-						<li>The Left Outer Join produces all records from Table A, with matching records
-							from Table B if they are available.</li>
-						<li>If there is no matching record in Table B, the right side will have a null value.</li>
+						<li>The Left Outer Join produces all records from TableA, with matching records
+							from TableB if they are available.</li>
+						<li>If there is no matching record in TableB, the right side will have a null value.</li>
 					</ul>
-					<pre><code contenteditable class="JavaScript">Table A                    Table B
+					<pre><code contenteditable class="JavaScript">TableA                    TableB
 =================          =================
 id    name                 id     name
 =================          =================
@@ -330,10 +240,10 @@ id    name                 id     name
 
 				<section>
 					<h3>LEFT OUTER JOIN</h3>
-					<p>Selects all sets of records from Table A and Table B.</p>
+					<p>Selects all sets of records from TableA and TableB.</p>
 					<img style="height:250px" src="images/leftouterjoin.png"/>
 					<pre><code contenteditable class="JavaScript">SELECT * from TableA
-LEFT OUTER JOIN Table B
+LEFT OUTER JOIN TableB
 ON TableA.name = TableB.name;
 
 =================          =================
@@ -347,12 +257,12 @@ id    name                 id     name
 				</section>
 
 				<section>
-					<h3>Records in Table A, but not Table B</h3>
+					<h3>Records in TableA, but not TableB</h3>
 					<ul>
-						<li>Let's say we want to know all of the records in Table A that don't also appear in Table B.</li>
+						<li>Let's say we want to know all of the records in TableA that don't also appear in TableB.</li>
 						<li>We can do this by adding a WHERE clause to our left outer join.</li>
 					</ul>
-					<pre><code contenteditable class="JavaScript">Table A                    Table B
+					<pre><code contenteditable class="JavaScript">TableA                    TableB
 =================          =================
 id    name                 id     name
 =================          =================
@@ -364,13 +274,13 @@ id    name                 id     name
 				</section>
 
 				<section>
-					<h3>Records in Table A, but not Table B</h3>
+					<h3>Records in TableA, but not TableB</h3>
 					<p>Remembere that the left outer join gave us null values for the right
-						side if there was no corresponding record in Table B. We can now use
+						side if there was no corresponding record in TableB. We can now use
 					this information to isolate the records we want.</p>
 					<img style="height:250px" src="images/in_a_but_not_b.png"/>
 					<pre><code contenteditable class="JavaScript">SELECT * from TableA
-LEFT OUTER JOIN Table B
+LEFT OUTER JOIN TableB
 ON TableA.name = TableB.name
 WHERE TableB.id IS null;
 
@@ -383,13 +293,13 @@ id    name                 id     name
 				</section>
 
 				<section>
-					<h3>Records in Table A OR Table B, but not in both</h3>
+					<h3>Records in TableA OR TableB, but not in both</h3>
 					<ul>
-						<li>Let's say we want to know all of the records in Table A or Table B,
+						<li>Let's say we want to know all of the records in TableA or TableB,
 							but want to exclude records that appear in both.</li>
 						<li>We can do this by adding a WHERE clause to a full outer join.</li>
 					</ul>
-					<pre><code contenteditable class="JavaScript">Table A                    Table B
+					<pre><code contenteditable class="JavaScript">TableA                    TableB
 =================          =================
 id    name                 id     name
 =================          =================
@@ -401,11 +311,11 @@ id    name                 id     name
 				</section>
 
 				<section>
-					<h3>Records in Table A OR Table B, but not in both</h3>
-					<p>This will give us records unique to Table A OR Table B.</p>
+					<h3>Records in TableA OR TableB, but not in both</h3>
+					<p>This will give us records unique to TableA OR TableB.</p>
 					<img style="height:250px" src="images/unique_to_a_and_b.png"/>
 					<pre><code contenteditable class="JavaScript">SELECT * from TableA
-FULL OUTER JOIN Table B
+FULL OUTER JOIN TableB
 ON TableA.name = TableB.name
 WHERE TableA.id IS null
 OR TableB.id IS null;
@@ -640,7 +550,7 @@ GROUP BY CustomerId;
 						<p>We can think of an index in a database as being similar to an index in the back of a book.</p>
 						<pre><code contenteditable class="JavaScript">sqlite> CREATE INDEX salary_index ON COMPANY (salary);
 	</code></pre>
-						<p>You can list all of the indexes on a table by using the <em>.indices TABLE</em> command.
+						<p>You can list all of the indexes on a TableBy using the <em>.indices TABLE</em> command.
 						<pre><code contenteditable class="JavaScript">sqlite> .indices Employee
 IFK_EmployeeReportsTo
 IPK_Employee
@@ -654,7 +564,7 @@ IPK_Employee
 						<p>You can think of a view as the results of a query that can be accessed as a virtual table</p>
 						<p>A view is not a part of the physical schema of a database, and
 							its values are computed dynamically from the data in the database.</p>
-						<pre><code contenteditable class="JavaScript">sqlite> CREATE VIEW cheap_tracks AS SELECT * FROM Tracks WHERE UnitPrice <= 0.99;
+						<pre><code contenteditable class="JavaScript">sqlite> CREATE VIEW cheap_tracks AS SELECT * FROM Track WHERE UnitPrice <= 0.99;
 	</code></pre>
 					</section>
 
