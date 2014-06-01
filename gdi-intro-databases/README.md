@@ -1,31 +1,24 @@
-GDI Core Introduction to Web Concepts
+Intro to Databases
 ======================
 
-This is the official Girl Develop It Core Intro Web Concepts course. Material was originally developed by Matt Torbin and Elise Wei.
+This material was originally developed by Heather Wade, with Class 1 Data Modeling material adapted from Pamela Fox's one day workshop.
 
-The course is meant to be taught in a single two-hour workshop. 
+The course is meant to be taught in a four two-hour classes.
 
 ## Suggested course description is below:
 
-*Not sure how the Internet works?*
+A database is an organized collection of data. In this class, we will discuss the science (and art) of storing and retrieving data. As anyone who has tried to analyze data using Excel can attest, it is not as simple as it might seem.
 
-*Want to build a cool website, but can’t decide what language to use?*
+Are you a developer (web or otherwise) and wish to learn more about the backend stack? Are you an analyst who would like to learn why your reports take time to build and run? Are you a business owner or hobbyist who'd like to design your own database system? Or, maybe you're thinking about becoming a database professional? If you answered yes to any of the questions above or are just generally interested in learning more about databases - this class will get you started.
 
-*Tired of techies throwing around acronyms that make your head spin?*
+This four class course runs on Thursdays:
 
-In this class, we will walk through the fundamentals of web development in layman terms. While we won't be writing code, we'll take you through various components of the web and how they work together. If you want to learn how to communicate better with your technical team or friends, this course is for you. Topics include but are not limited to:
+* Class 1 - Intro to Data Modeling
+* Class 2 - Intro to SQL, Reading Data
+* Class 3 - Creating, Reading and Updating Tables
+* Class 4 - Joins and Advanced Topics
 
-*   What is the World Wide Web?
-*   Where are web site files generally stored?
-*   What is the difference between a client and a server?
-*   Which programming languages are compiled on a server and which are compiled in a web browser?
-*   What do you need to know before building a web site?
-*   What language should you use and what are the differences?
-*   What tools do you need to develop a web site?
-*   Who does what on a typical web development team?
-*   What is Web 2.0 and the Cloud?
-
-This class is for people with little to no technical experience.
+At this time, you will need to provide your own laptop - PC or Mac - to participate in the course.
 
 ## Theme customization
 
