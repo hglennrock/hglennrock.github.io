@@ -5,16 +5,21 @@ function calculate(){
 
     var days = (oldAge - age) * 356;
     var total = perDay * days;
+    var resultDiv = $('#lifetime-supply')
     if(total > 40000){
-        alert("You will need " + total + " to last you until the ripe old age of " + oldAge + ". Wow! That's a lot!");
+        resultDiv.html("You will need " + total + " to last you until the ripe old age of " + oldAge + ". Wow! That's a lot!");
     }else{
-        alert("You will need " + total + " to last you until the ripe old age of " + oldAge + ". You seem pretty reasonable");
+        resultDiv.html("You will need " + total + " to last you until the ripe old age of " + oldAge + ". You seem pretty reasonable");
     } 
 }
 
 function favoriteThings(){
     var favoriteThings = ['Rabbits', 'Orange', 'Yogurt', 'Brussel Sprouts', 'Otters'];
+    var resultDiv = $('#favorite-things');
+    
+    var resultParagraph = $('<p></p>');
     var result = 'My favorite things are: ';
+    
     for (var i = 0; i<favoriteThings.length; i++){
         if (i < favoriteThings.length - 1){
             result += favoriteThings[i] + ', ';
@@ -22,7 +27,8 @@ function favoriteThings(){
             result += "and " + favoriteThings[i] + '.';
         }
     }
-    alert(result);
+    resultParagraph.append(result);
+    resultDiv.append(resultParagraph);
 }
 function myFriends(){
     var friends = [
@@ -33,11 +39,16 @@ function myFriends(){
         {name: 'Tooth Fairy',
         hair: 'blue'}
     ];
-    var results = "My friends: "
+    var resultDiv = $('<div></div>')
+    
+    var introParagraph = $('<p>My friends are:</p>');
+    resultDiv.append(introParagraph)
+    
     for(var i = 0; i < friends.length; i++){
-        results += describeFriend(friends[i]);
+        var resultParagraph = $('<p>' + describeFriend(friends[i]) + '</p>');
+        resultDiv.append(resultParagraph);
     }
-    alert(results)
+    $('body').append(resultDiv);
 }
 function describeFriend(friend){
     return "My friend " + friend.name + " has " + friend.hair + " hair. ";
